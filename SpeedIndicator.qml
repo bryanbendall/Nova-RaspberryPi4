@@ -17,7 +17,7 @@ Text {
     }
 
     SequentialAnimation{
-        running: true
+//        running: true
         NumberAnimation{ target: mphText; property: "speed"; to: 150; duration: 5000; }
         NumberAnimation{ target: mphText; property: "speed"; to: 0; duration: 5000; }
         loops: Animation.Infinite

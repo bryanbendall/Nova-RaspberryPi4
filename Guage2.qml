@@ -5,6 +5,9 @@ Item {
     property real minValue: 0
     property real maxValue: 100
     property real value: 50
+    property real highWarn: 10000
+    property real lowWarn: -1000
+    property bool showLowWarn: true
     property int decialPlaces: 0
     property alias units: unitText.text
     property alias image: symbol.imageSource
@@ -44,13 +47,13 @@ Item {
 
             ctx.beginPath()
             ctx.lineWidth = barWidth
-            ctx.strokeStyle = '#2D2B2E'
+            ctx.strokeStyle = value < lowWarn & showLowWarn ? "#B30C14" : '#2D2B2E'
             ctx.arc(width/2, height/2, width / 2 - barWidth / 2 , degreesToRadians(90), degreesToRadians(360), false)
             ctx.stroke()
 
             ctx.beginPath()
             ctx.lineWidth = barWidth - 2
-            ctx.strokeStyle = '#FD9012'
+            ctx.strokeStyle = value > highWarn ? "#B30C14" : '#FD9012'
             ctx.arc(width/2, height/2, width / 2 - barWidth / 2 , degreesToRadians(90), valueToRadians(parent.value), false)
             ctx.stroke()
         }

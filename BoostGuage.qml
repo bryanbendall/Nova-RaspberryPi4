@@ -42,7 +42,7 @@ Item {
         property real radius: 250
 
         SequentialAnimation {
-            running: true
+//            running: true
             NumberAnimation {
                 target: gauge
                 property: "value"

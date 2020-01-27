@@ -4,17 +4,17 @@ Item {
     id: root
 
     property real gasValue: 73
-    property real methValue: 25
+    property real methValue: 19
 
     SequentialAnimation{
-            running: true
+//            running: true
         NumberAnimation{ target: root; property: "gasValue"; to: 100; duration: 3000; }
         NumberAnimation{ target: root; property: "gasValue"; to: 0; duration: 3000; }
         loops: Animation.Infinite
     }
 
     SequentialAnimation{
-            running: true
+//            running: true
         NumberAnimation{ target: root; property: "methValue"; to: 100; duration: 3000; }
         NumberAnimation{ target: root; property: "methValue"; to: 0; duration: 3000; }
         loops: Animation.Infinite
@@ -26,7 +26,7 @@ Item {
         anchors.bottom: parent.bottom
         width: 32
         height: 32
-        color: "#e5e5e5"
+        color: root.methValue < 20 ? "#B30C14" : "#e5e5e5"
         imageSource: "Images/gasicon.svg"
         Text{
             anchors.right: parent.right
@@ -43,7 +43,7 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 10
         anchors.verticalCenter: methIcon.verticalCenter
-        color: "#2D2B2E"
+        color: root.methValue < 20 ? "#B30C14" : "#2D2B2E"
         height: 10
         Rectangle{
             anchors.left: parent.left
@@ -60,7 +60,7 @@ Item {
         anchors.bottom: methIcon.top
         width: 32
         height: 32
-        color: "#e5e5e5"
+        color: root.gasValue < 20 ? "#B30C14" : "#e5e5e5"
         imageSource: "Images/gasicon.svg"
     }
     Rectangle {
@@ -68,7 +68,7 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 10
         anchors.verticalCenter: gasIcon.verticalCenter
-        color: "#2D2B2E"
+        color: root.gasValue < 20 ? "#B30C14" : "#2D2B2E"
         height: 10
         Rectangle{
             anchors.left: parent.left

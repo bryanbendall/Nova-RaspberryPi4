@@ -18,7 +18,7 @@ Item {
 //        value: 4500
 
         SequentialAnimation{
-            running: true
+//            running: true
             NumberAnimation{ target: guage; property: "value"; to: 9000; duration: 3000; }
             NumberAnimation{ target: guage; property: "value"; to: 0; duration: 3000; }
             loops: Animation.Infinite

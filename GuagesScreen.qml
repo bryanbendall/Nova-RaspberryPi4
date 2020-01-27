@@ -17,6 +17,13 @@ Item {
         height: 480
         color: "black"
 
+        InfoPanel{
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: tach.right
+        }
+
         ColorVectorImage{
             anchors.top: parent.top
             anchors.topMargin: 5
@@ -54,6 +61,7 @@ Item {
                 minValue: 30
                 maxValue: 250
                 value: 180
+                highWarn: 200
                 units: "°F"
                 image: "Images/water-temp.svg"
                 ColorVectorImage{
@@ -65,7 +73,7 @@ Item {
                     color: "#0F829D"
                 }
                 SequentialAnimation{
-                        running: true
+//                        running: true
                     NumberAnimation{ target: tempGauge; property: "value"; to: 250; duration: 3000; }
                     NumberAnimation{ target: tempGauge; property: "value"; to: 30; duration: 3000; }
                     loops: Animation.Infinite
@@ -75,12 +83,13 @@ Item {
                 id: oilGauge
                 minValue: 0
                 maxValue: 100
-                value: 40
+                value: 3
+                lowWarn: 5
                 units: "PSI"
                 image: "Images/engine-oil.svg"
             }
             SequentialAnimation{
-                    running: true
+//                    running: true
                 NumberAnimation{ target: oilGauge; property: "value"; to: 100; duration: 3000; }
                 NumberAnimation{ target: oilGauge; property: "value"; to: 0; duration: 3000; }
                 loops: Animation.Infinite

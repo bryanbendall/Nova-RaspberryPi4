@@ -39,5 +39,6 @@
         <file>Images/engine-light.svg</file>
         <file>Images/engine-oil.svg</file>
         <file>Images/water-temp.svg</file>
+        <file>InfoPanel.qml</file>
     </qresource>
 </RCC>

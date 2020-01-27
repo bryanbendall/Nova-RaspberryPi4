@@ -16,7 +16,7 @@ Item {
         value: 14.5
 
         SequentialAnimation {
-            running: true
+//            running: true
             NumberAnimation {
                 target: guage
                 property: "value"

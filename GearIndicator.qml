@@ -17,7 +17,7 @@ Text {
     }
 
     SequentialAnimation{
-        running: true
+//        running: true
         NumberAnimation{ target: gearText; property: "gearNum"; to: 5; duration: 5000; }
         NumberAnimation{ target: gearText; property: "gearNum"; to: 0; duration: 5000; }
         loops: Animation.Infinite
