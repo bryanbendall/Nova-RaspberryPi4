@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
+import GlobalVariables 1.0
 
 Item {
 
@@ -13,24 +14,7 @@ Item {
 
         minimumValue: 10
         maximumValue: 16
-        value: 14.5
-
-        SequentialAnimation {
-//            running: true
-            NumberAnimation {
-                target: guage
-                property: "value"
-                to: 12
-                duration: 500
-            }
-            NumberAnimation {
-                target: guage
-                property: "value"
-                to: 14.5
-                duration: 500
-            }
-            loops: Animation.Infinite
-        }
+        value: GlobalVariables.afr
 
         style: CircularGaugeStyle {
             minimumValueAngle: 50

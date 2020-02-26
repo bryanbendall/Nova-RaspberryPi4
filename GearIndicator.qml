@@ -1,11 +1,13 @@
 import QtQuick 2.0
+import GlobalVariables 1.0
 
 Text {
     id: gearText
-    property int gearNum: 0
+    property int gearNum: GlobalVariables.gear
     color: "#FD9012"
     font.pointSize: 80
     text: gearNum
+    visible: GlobalVariables.showGear
 
     Text {
         anchors.top: parent.bottom
@@ -16,10 +18,4 @@ Text {
         text: "Gear"
     }
 
-    SequentialAnimation{
-//        running: true
-        NumberAnimation{ target: gearText; property: "gearNum"; to: 5; duration: 5000; }
-        NumberAnimation{ target: gearText; property: "gearNum"; to: 0; duration: 5000; }
-        loops: Animation.Infinite
-    }
 }

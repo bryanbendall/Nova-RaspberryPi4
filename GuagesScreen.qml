@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import GlobalVariables 1.0
 
 Item {
     property real scalling: 2.1333
@@ -33,6 +34,7 @@ Item {
             height: 50
             imageSource: "Images/turn-signal.svg"
             color: "#4CD90F"
+            visible: GlobalVariables.rightTurnState
         }
 
         ColorVectorImage{
@@ -44,6 +46,7 @@ Item {
             height: 50
             imageSource: "Images/turn-signal.svg"
             color: "#4CD90F"
+            visible: GlobalVariables.leftTurnState
             transform: Rotation{
                 angle: 180
                 origin.x: 25
@@ -60,7 +63,7 @@ Item {
                 id: tempGauge
                 minValue: 30
                 maxValue: 250
-                value: 180
+                value: GlobalVariables.cts
                 highWarn: 200
                 units: "°F"
                 image: "Images/water-temp.svg"
@@ -70,29 +73,18 @@ Item {
                     width: 50
                     height: 50
                     imageSource: "Images/fan.svg"
-                    color: "#0F829D"
-                }
-                SequentialAnimation{
-//                        running: true
-                    NumberAnimation{ target: tempGauge; property: "value"; to: 250; duration: 3000; }
-                    NumberAnimation{ target: tempGauge; property: "value"; to: 30; duration: 3000; }
-                    loops: Animation.Infinite
+                    color: "#146AA1"
+                    visible: GlobalVariables.fanState
                 }
             }
             Guage2{
                 id: oilGauge
                 minValue: 0
                 maxValue: 100
-                value: 3
+                value: GlobalVariables.oilPressure
                 lowWarn: 5
                 units: "PSI"
                 image: "Images/engine-oil.svg"
-            }
-            SequentialAnimation{
-//                    running: true
-                NumberAnimation{ target: oilGauge; property: "value"; to: 100; duration: 3000; }
-                NumberAnimation{ target: oilGauge; property: "value"; to: 0; duration: 3000; }
-                loops: Animation.Infinite
             }
         }
 
@@ -127,6 +119,31 @@ Item {
         TachGuage{
             id: tach
             anchors.centerIn: parent
+        }
+
+        ColorVectorImage{
+            id: highbeamIndicator
+            anchors.right: parent.horizontalCenter
+            anchors.rightMargin: 10
+            anchors.bottom: parent.verticalCenter
+            anchors.bottomMargin: 70
+            width: 50
+            height: 50
+            imageSource: "Images/high-beam.svg"
+            color: "#146AA1"
+            visible: GlobalVariables.highbeamIndicatorState
+        }
+
+        ColorVectorImage{
+            anchors.left: parent.horizontalCenter
+            anchors.leftMargin: 10
+            anchors.bottom: parent.verticalCenter
+            anchors.bottomMargin: 70
+            width: 50
+            height: 50
+            imageSource: "Images/parking-brake.svg"
+            color: "#B30C14"
+            visible: GlobalVariables.parkingBrakeState
         }
 
         SpeedIndicator{

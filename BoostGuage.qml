@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
+import GlobalVariables 1.0
 
 Item {
 
@@ -37,26 +38,10 @@ Item {
         anchors.leftMargin: 340
         anchors.verticalCenter: parent.verticalCenter
         height: parent.height - 100
+        value: GlobalVariables.boost
 
         property real lineWidth: 20
         property real radius: 250
-
-        SequentialAnimation {
-//            running: true
-            NumberAnimation {
-                target: gauge
-                property: "value"
-                to: 20
-                duration: 3000
-            }
-            NumberAnimation {
-                target: gauge
-                property: "value"
-                to: 0
-                duration: 3000
-            }
-            loops: Animation.Infinite
-        }
 
         minimumValue: 0
         maximumValue: 20

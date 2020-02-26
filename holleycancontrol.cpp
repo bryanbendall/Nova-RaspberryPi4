@@ -1,182 +1,106 @@
 #include "holleycancontrol.h"
-#include <QVariant>
-#include <QThread>
-#include "holleycanmsg.h"
+
 #include <QDebug>
-#include "wiringPi.h"
+#include <QTimer>
 
-HolleyCanControl* HolleyCanControl::s_holleyCanControl = nullptr;
-
-HolleyCanControl::HolleyCanControl(QQmlContext* context, QObject *parent)
-    : QObject(parent), m_can0(0, CanSpeed::CAN_1_MBPS, CanId::EXT, 0, 0), m_context(context)
+HolleyCanControl::HolleyCanControl(QObject *parent)
+    : QObject(parent)
 {
-//    m_ignoreIds.push_back(503485426);
-//    m_ignoreIds.push_back(504321010);
-//    m_ignoreIds.push_back(504271858);
-//    m_ignoreIds.push_back(504222706);
-//    m_ignoreIds.push_back(504157170);
-//    m_ignoreIds.push_back(504091634);
-//    m_ignoreIds.push_back(503714802);
-//    m_ignoreIds.push_back(503632882);
-//    m_ignoreIds.push_back(503583730);
-//    m_ignoreIds.push_back(503534578);
-
-//    m_ignoreIds.push_back(503370738);
-//    m_ignoreIds.push_back(507925490);
-//    m_ignoreIds.push_back(507876338);
-//    m_ignoreIds.push_back(507335666);
-//    m_ignoreIds.push_back(507089906);
-//    m_ignoreIds.push_back(506909682);
-//    m_ignoreIds.push_back(505861106);
-//    m_ignoreIds.push_back(505631730);
-//    m_ignoreIds.push_back(505304050);
-//    m_ignoreIds.push_back(505140210);
-//    m_ignoreIds.push_back(505041906);
-//    m_ignoreIds.push_back(504943602);
-
-
-    qRegisterMetaType<CanMsg>();
-
-    QThread* thread = new QThread(this);
-    m_timer = new QTimer();
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateHolleyData()));
-    m_timer->setInterval(50);
-    m_timer->moveToThread(thread);
-    connect(thread, SIGNAL(started()), m_timer, SLOT(start()));
-    thread->start();
-
-    connect(this, SIGNAL(MsgFromISR(CanMsg)), this, SLOT(handleResult(CanMsg)));
-
-    s_holleyCanControl = this;
-#ifdef RASPPI
-    qDebug() << "wiring pi isr: " << wiringPiISR(17, INT_EDGE_FALLING, &holleyCanISR);
+#if defined(CAMARO) || defined(NOVA)
+    QMetaObject::invokeMethod(this, &HolleyCanControl::connectToCan, Qt::QueuedConnection);
 #endif
-
-//    m_model.insert(new HolleyCanMsg("test", "1", "2", "3", "4", "5", "6", "7", "8", this));
-
 }
 
-void HolleyCanControl::handleResult(CanMsg msg)
+HolleyCanControl::~HolleyCanControl()
 {
-//    for(int j = 0; j < m_ignoreIds.length(); j++){
-//        if((int)msg.id == m_ignoreIds[j]){
-//            return;
-//        }
-//    }
+    m_timer->stop();
+    delete m_timer;
+}
 
-    for(int i = 0; i < m_model.rowCount(QModelIndex()); i++){
-        QObject* obj = m_model.data(m_model.index(i), 1).value<QObject*>();
+void HolleyCanControl::connectToCan()
+{
+    system("sudo ip link set can0 up type can bitrate 1000000");
 
-        if(obj->property("address").toInt() == (int)msg.id){
-
-            HolleyCanMsg* canMsg = (HolleyCanMsg*)obj;
-//            canMsg->setData0(msg.data0);
-//            canMsg->setData1(msg.data1);
-//            canMsg->setData2(msg.data2);
-//            canMsg->setData3(msg.data3);
-//            canMsg->setData4(msg.data4);
-//            canMsg->setData5(msg.data5);
-//            canMsg->setData6(msg.data6);
-//            canMsg->setData7(msg.data7);
-
-            unsigned long temp = (msg.data0 << 24) | (msg.data1 << 16) | (msg.data2 << 8) | msg.data3;
-            float f = *((float*)&temp);
-            int index = (msg.id & 0x1FFC000) >> 14;
-
-            switch (index) {
-            case 1:
-                canMsg->setLabel("index " + QString::number(index) + " rpm " + QString::number(f) );
-                break;
-            case 2:
-                canMsg->setLabel("index " + QString::number(index) + " inj pluse width " + QString::number(f) );
-                break;
-            case 3:
-                canMsg->setLabel("index " + QString::number(index) + " duty cycle " + QString::number(f) );
-                break;
-            case 4:
-                canMsg->setLabel("index " + QString::number(index) + " cl comp " + QString::number(f) );
-                break;
-            case 5:
-                canMsg->setLabel("index " + QString::number(index) + " target afr " + QString::number(f) );
-                break;
-            case 6:
-                canMsg->setLabel("index " + QString::number(index) + " afr left " + QString::number(f) );
-                break;
-            case 26:
-                canMsg->setLabel("index " + QString::number(index) + " map " + QString::number(f) );
-                break;
-            case 27:
-                canMsg->setLabel("index " + QString::number(index) + " tps " + QString::number(f) );
-                break;
-            case 28:
-                canMsg->setLabel("index " + QString::number(index) + " mat " + QString::number(f) );
-                break;
-            case 29:
-                canMsg->setLabel("index " + QString::number(index) + " cts " + QString::number(f) );
-                break;
-
-            default:
-                canMsg->setLabel("index " + QString::number(index) + " data " + QString::number(f) );
-            }
-
-//            if(msg.id == 507171826)
-//                canMsg->setLabel("pedal tps #2 " + QString::number(f));
-
-//            if(msg.id == 507155442)
-//                canMsg->setLabel("pedal tps #1 " + QString::number(f));
-
-            return;
-        }
+    if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
+        qDebug() << "SocketCan not available!";
+        return;
     }
 
-    int index = (msg.id & 0x1FFC000) >> 14;
-    if((index > 0 && index < 7) || (index > 25 && index < 30)){
-        m_model.insert(new HolleyCanMsg(msg.id,
-                                                 msg.data0,
-                                                 msg.data1,
-                                                 msg.data2,
-                                                 msg.data3,
-                                                 msg.data4,
-                                                 msg.data5,
-                                                 msg.data6,
-                                                 msg.data7,
-                                                 nullptr));
+    QString errorString;
+    bool connectionStatus;
+    m_can0 = QCanBus::instance()->createDevice(
+        QStringLiteral("socketcan"), QStringLiteral("can0"), &errorString);
+    if (!m_can0) {
+        // Error handling goes here
+        qDebug() << "Creating Device Error: " << errorString;
+        return;
+    } else {
+
+        setupFilters();
+
+        connect(m_can0, &QCanBusDevice::errorOccurred, [=](){qDebug() << "QCanBusDevice::errorOccurred - " << m_can0->errorString();});
+        connect(m_can0, &QCanBusDevice::stateChanged, [=](){qDebug() << "QCanBusDevice::stateChanged - " << m_can0->state();});
+        connect(m_can0, &QCanBusDevice::framesReceived, this, &HolleyCanControl::readFrame);
+
+        connectionStatus = m_can0->connectDevice();
     }
 
-//    if(m_model.rowCount(QModelIndex()) > 15)
-//        return;
-
-//    m_model.insert(new HolleyCanMsg(msg.id,
-//                                             msg.data0,
-//                                             msg.data1,
-//                                             msg.data2,
-//                                             msg.data3,
-//                                             msg.data4,
-//                                             msg.data5,
-//                                             msg.data6,
-//                                             msg.data7,
-//                                             nullptr));
-}
-
-void HolleyCanControl::updateHolleyData()
-{
-    for(int i = 0; i < m_model.rowCount(QModelIndex()); i++){
-
-        QObject* obj = m_model.data(m_model.index(i), 1).value<QObject*>();
-        HolleyCanMsg* canMsg = (HolleyCanMsg*)obj;
-        canMsg->manualDataUpdate();
+    if(!connectionStatus){
+        qDebug() << "Connection Failed!";
+        return;
     }
+
+    m_setupDone = true;
+    qDebug() << "can0 connect successful";
+
+    m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &HolleyCanControl::onHolleyDataChanged);
+    m_timer->start(20);
+
 }
 
-void HolleyCanControl::startCan()
+void HolleyCanControl::readFrame()
 {
-    while(m_can0.Available())
-        m_can0.GetCanMsg();
+    qDebug() << "Frames available: " << m_can0->framesAvailable();
+    QCanBusFrame frame = m_can0->readFrame();
+    qDebug() << "Recieved Frame: " << frame.frameId();
 
-    qDebug() << "done clear out data";
+    unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
+    m_data[index] = getFloat(frame);
 }
 
-void holleyCanISR()
+void HolleyCanControl::setupFilters()
 {
-    HolleyCanControl::get()->MsgFromISR(HolleyCanControl::get()->getCan0().GetCanMsg());
+    QCanBusDevice::Filter filter;
+    QList<QCanBusDevice::Filter> filterList;
+
+    filter.frameIdMask = 0x1FFC000;
+    filter.format = QCanBusDevice::Filter::MatchExtendedFormat;
+    filter.type = QCanBusFrame::DataFrame;
+
+    for(auto f : m_filterId){
+        filter.frameId = (f << 14);
+        filterList.append(filter);
+    }
+
+    // apply filter
+    m_can0->setConfigurationParameter(QCanBusDevice::RawFilterKey, QVariant::fromValue(filterList));
 }
+
+float HolleyCanControl::getFloat(QCanBusFrame &frame)
+{
+    unsigned long temp = (frame.payload().at(0) << 24) | (frame.payload().at(1) << 16) | (frame.payload().at(2) << 8) | frame.payload().at(3);
+    float f = *((float*)&temp);
+    return f;
+}
+
+void HolleyCanControl::registerFilter(unsigned int filter)
+{
+//    qDebug() << "register filter: " << filter;
+    if(m_setupDone)
+        return;
+    if(m_filterId.contains(filter))
+        return;
+    m_filterId.push_back(filter);
+}
+

@@ -3,6 +3,7 @@ import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls 1.4
 import QtGraphicalEffects 1.0
+import GlobalVariables 1.0
 
 Item {
     height: 450
@@ -15,14 +16,7 @@ Item {
         anchors.fill: parent
         minimumValue: 0
         maximumValue: 9000
-//        value: 4500
-
-        SequentialAnimation{
-//            running: true
-            NumberAnimation{ target: guage; property: "value"; to: 9000; duration: 3000; }
-            NumberAnimation{ target: guage; property: "value"; to: 0; duration: 3000; }
-            loops: Animation.Infinite
-        }
+        value: GlobalVariables.rpm
 
         style: CircularGaugeStyle {
             needle: Image{

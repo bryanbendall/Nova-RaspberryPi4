@@ -1,24 +1,11 @@
 import QtQuick 2.0
+import GlobalVariables 1.0
 
 Item {
     id: root
 
-    property real gasValue: 73
-    property real methValue: 19
-
-    SequentialAnimation{
-//            running: true
-        NumberAnimation{ target: root; property: "gasValue"; to: 100; duration: 3000; }
-        NumberAnimation{ target: root; property: "gasValue"; to: 0; duration: 3000; }
-        loops: Animation.Infinite
-    }
-
-    SequentialAnimation{
-//            running: true
-        NumberAnimation{ target: root; property: "methValue"; to: 100; duration: 3000; }
-        NumberAnimation{ target: root; property: "methValue"; to: 0; duration: 3000; }
-        loops: Animation.Infinite
-    }
+    property real gasValue: GlobalVariables.gasLevel
+    property real methValue: GlobalVariables.methLevel
 
     ColorVectorImage{
         id: methIcon

@@ -7,7 +7,8 @@ CONFIG += c++11
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-CONFIG(RaspPi):DEFINES += RASPPI
+CONFIG(Nova):DEFINES += NOVA
+CONFIG(Camaro):DEFINES += CAMARO
 
 #QMAKE_POST_LINK += sudo setpcap CAP_NET_ADMIN=eip NovaTablet
 
@@ -23,19 +24,11 @@ SOURCES += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softTone.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/piHiPri.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringSerial.c \
-    serialcomm.cpp \
-    lightcontrol.cpp \
-    datareciever.cpp \
-    windowcontrol.cpp \
-    bluetoothcontrol.cpp \
-    ../../Downloads/spi_can/spi_can.cpp \
-    spi.cpp \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringPiSPI.c \
-    cancontrol.cpp \
-    holleycanmsg.cpp \
     holleycancontrol.cpp \
-    holleycanmodel.cpp \
-    qtcancontrol.cpp \
+    bluetoothwatcher.cpp \
+    racepakcancontrol.cpp \
+    novacancontrol.cpp
 
 RESOURCES += qml.qrc \
     res.qrc
@@ -56,22 +49,11 @@ HEADERS += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softPwm.h \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softTone.h \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringSerial.h \
-    serialcomm.h \
-    tabcommdefs.h \
-    lightcontrol.h \
-    datareciever.h \
-    windowcontrol.h \
-    bluetoothcontrol.h \
-    ../../Downloads/spi_can/spi_can.h \
-    ../../Downloads/spi_can/spi_can_defs.h \
-    ../../Downloads/spi_can/spi_can_msg.h \
-    spi.h \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringPiSPI.h \
-    cancontrol.h \
-    holleycanmsg.h \
     holleycancontrol.h \
-    holleycanmodel.h \
-    qtcancontrol.h \
+    bluetoothwatcher.h \
+    racepakcancontrol.h \
+    novacancontrol.h
 
 INCLUDEPATH += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/ \

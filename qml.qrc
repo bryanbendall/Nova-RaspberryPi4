@@ -1,12 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
         <file>IndicatorButton.qml</file>
-        <file>SerialButtons.qml</file>
-        <file>Guage.qml</file>
-        <file>GuageLayout.qml</file>
-        <file>TextGuage.qml</file>
-        <file>HolleyCanListView.qml</file>
         <file>GuagesScreen.qml</file>
         <file>CenterScreen.qml</file>
         <file>TachGuage.qml</file>
@@ -40,5 +34,7 @@
         <file>Images/engine-oil.svg</file>
         <file>Images/water-temp.svg</file>
         <file>InfoPanel.qml</file>
+        <file>NovaVariables.qml</file>
+        <file>CamaroVariables.qml</file>
     </qresource>
 </RCC>

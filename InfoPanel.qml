@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import GlobalVariables 1.0
 
 Item {
     id: root
@@ -18,7 +19,7 @@ Item {
                 height: root.guageSize
                 minValue: 6
                 maxValue: 18
-                value: 14.2
+                value: GlobalVariables.battery
                 highWarn: 16
                 lowWarn: 10
                 decialPlaces: 1
@@ -31,7 +32,7 @@ Item {
                 minValue: 50
                 maxValue: 280
                 highWarn: 200
-                value: 140
+                value: GlobalVariables.lineTemp
                 units: "°F"
                 image: "Images/transmission-temp.svg"
             }
@@ -44,7 +45,7 @@ Item {
                 height: root.guageSize
                 minValue: 0
                 maxValue: 100
-                value: 80
+                value: GlobalVariables.fuelPressure
                 lowWarn: 30
                 units: "Gas Psi"
                 image: "Images/gasicon.svg"
@@ -54,7 +55,7 @@ Item {
                 height: root.guageSize
                 minValue: 0
                 maxValue: 100
-                value: 0
+                value: GlobalVariables.methPressure
                 lowWarn: 30
                 showLowWarn: false
                 units: "Meth Psi"

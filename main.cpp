@@ -2,43 +2,37 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QCursor>
-#include "wiringPi.h"
-#include "wiringSerial.h"
-#include "serialcomm.h"
-#include "lightcontrol.h"
-#include "datareciever.h"
-#include "windowcontrol.h"
-//#include "bluetoothcontrol.h"
-#include "cancontrol.h"
-#include <QSurfaceFormat>
-//#include "holleycancontrol.h"
 #include <QDebug>
-#include <QSerialPortInfo>
-#include "qtcancontrol.h"
 #include <QQuickView>
 #include <QScreen>
-#include <QRect>
 #include <QFontDatabase>
+#include "bluetoothwatcher.h"
+#include "holleycancontrol.h"
+#include "racepakcancontrol.h"
+#include "novacancontrol.h"
 
 int main(int argc, char *argv[])
 {
 
-#ifdef RASPPI
-    qDebug() << "wiring pi setup: " << wiringPiSetupSys();
+#if defined(CAMARO) || defined(NOVA)
+//    qDebug() << "wiring pi setup: " << wiringPiSetupSys();
 #endif
 
 //    qputenv("QT_LOGGING_RULES", "qt.qpa.*=true");
 //    qputenv("QSG_INFO", "1");
 
-//    BluetoothControl btControl;
 
-//    CanControl canControl;
 
-//    SerialComm serial;
-//    LightControl lightControl(&serial);
-//    WindowControl windowControl(&serial);
-//    DataReciever dataReciever(&serial, &lightControl);
-//    QtCanControl qtCanControl;
+    BluetoothWatcher watcher;
+    HolleyCanControl holleyCan;
+#ifdef CAMARO
+    RacepakCanControl racepakCan;
+    qmlRegisterSingletonType(QUrl("qrc:/CamaroVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+#endif
+#ifdef NOVA
+    NovaCanControl novaCan;
+    qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+#endif
 
 
 
@@ -53,22 +47,8 @@ int main(int argc, char *argv[])
     QGuiApplication::setFont(QFont(family));
 
 ////    app.setOverrideCursor(Qt::BlankCursor);
-//    engine.rootContext()->setContextProperty("lightControl", &lightControl);
-//    engine.rootContext()->setContextProperty("windowControl", &windowControl);
-////    engine.rootContext()->setContextProperty("btControl", &btControl);
-//    engine.rootContext()->setContextProperty("canControl", &canControl);
-//    engine.rootContext()->setContextProperty("qtCanControl", &qtCanControl);
 
-//    HolleyCanControl holleyCanControl(engine.rootContext(), nullptr);
-//    engine.rootContext()->setContextProperty("holleyCanControl", &holleyCanControl);
-//    engine.rootContext()->setContextProperty("holleyModel", &holleyCanControl.getHolleyModel());
-
-//    qDebug() << "Number of serial ports" << QSerialPortInfo::availablePorts().length();
-//    for(auto sp : QSerialPortInfo::availablePorts()){
-//        qDebug() << sp.portName() << " " << sp.description() << " " << sp.manufacturer() << " " << sp.serialNumber() << " " << sp.systemLocation();
-//    }
-
-#ifdef RASPPI
+#if defined(CAMARO) || defined(NOVA)
     QList<QScreen *> screens = app.screens();
     qDebug("Application sees %d screens", screens.count());
     qDebug() << screens;
@@ -90,8 +70,13 @@ int main(int argc, char *argv[])
         v->rootContext()->setContextProperty("screenPhysSizeMm", screens[i]->physicalSize());
         v->rootContext()->setContextProperty("screenRefresh", screens[i]->refreshRate());
 
-//        v->engine()->rootContext()->setContextProperty("lightControl", &lightControl);
-//        v->engine()->rootContext()->setContextProperty("canControl", &canControl);
+        v->engine()->rootContext()->setContextProperty("holleyCan", &holleyCan);
+#ifdef CAMARO
+        v->engine()->rootContext()->setContextProperty("racepakCan", &racepakCan);
+#endif
+#ifdef NOVA
+        v->engine()->rootContext()->setContextProperty("novaCan", &novaCan);
+#endif
 
         switch (i) {
         case 0:
@@ -108,15 +93,28 @@ int main(int argc, char *argv[])
     }
 #endif
 
-#ifndef RASPPI
+#if !defined(CAMARO) && !defined(NOVA)
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("holleyCan", &holleyCan);
+#ifdef CAMARO
+    engine.rootContext()->setContextProperty("racepakCan", &racepakCan);
+#endif
+    NovaCanControl novaCan;
+    engine.rootContext()->setContextProperty("novaCan", &novaCan);
+
+
+    qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+
     engine.load(QUrl(QStringLiteral("qrc:/ComputerWrapper.qml")));
+
     if (engine.rootObjects().isEmpty())
         return -1;
 #endif
 
+
+
     int r = app.exec();
-#ifdef RASPPI
+#if defined(CAMARO) || defined(NOVA)
     qDeleteAll(views);
 #endif
     return r;
