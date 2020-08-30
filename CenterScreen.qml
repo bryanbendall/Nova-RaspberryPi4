@@ -13,7 +13,7 @@ Item {
         anchors.centerIn: parent
         width: parent.height
         height: parent.width
-        color: "blue"
+        color: "black"
 
         Map {
             id: map
@@ -39,6 +39,14 @@ Item {
 
         }
 
+        Text{
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: map.bottom
+            anchors.topMargin: 50
+            font.pointSize: 20
+            color: "white"
+            text: "Output value test: " + holleyCan.Output_62.toFixed(2)
+        }
 
     }
 }

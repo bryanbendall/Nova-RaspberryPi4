@@ -19,7 +19,7 @@ HolleyCanControl::~HolleyCanControl()
 
 void HolleyCanControl::connectToCan()
 {
-    system("sudo ip link set can0 up type can bitrate 1000000");
+    //system("sudo ip link set can0 up type can bitrate 1000000");
 
     if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
         qDebug() << "SocketCan not available!";
@@ -61,12 +61,15 @@ void HolleyCanControl::connectToCan()
 
 void HolleyCanControl::readFrame()
 {
-    qDebug() << "Frames available: " << m_can0->framesAvailable();
-    QCanBusFrame frame = m_can0->readFrame();
-    qDebug() << "Recieved Frame: " << frame.frameId();
+    for(int i = 0; i < m_can0->framesAvailable(); i++){
+        //qDebug() << "Frames available: " << m_can0->framesAvailable();
+        QCanBusFrame frame = m_can0->readFrame();
+        //qDebug() << "Recieved Frame: " << frame.frameId();
 
-    unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
-    m_data[index] = getFloat(frame);
+        unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
+        m_data[index] = getFloat(frame);
+    }
+
 }
 
 void HolleyCanControl::setupFilters()
@@ -79,7 +82,7 @@ void HolleyCanControl::setupFilters()
     filter.type = QCanBusFrame::DataFrame;
 
     for(auto f : m_filterId){
-        filter.frameId = (f << 14);
+        filter.frameId = ((unsigned long)f << 14);
         filterList.append(filter);
     }
 
@@ -89,18 +92,22 @@ void HolleyCanControl::setupFilters()
 
 float HolleyCanControl::getFloat(QCanBusFrame &frame)
 {
-    unsigned long temp = (frame.payload().at(0) << 24) | (frame.payload().at(1) << 16) | (frame.payload().at(2) << 8) | frame.payload().at(3);
+    unsigned long temp = ((unsigned long)frame.payload().at(0) << 24) |
+            ((unsigned long)frame.payload().at(1) << 16) |
+            ((unsigned long)frame.payload().at(2) << 8) |
+            (unsigned long)frame.payload().at(3);
+
     float f = *((float*)&temp);
     return f;
 }
 
 void HolleyCanControl::registerFilter(unsigned int filter)
 {
-//    qDebug() << "register filter: " << filter;
     if(m_setupDone)
         return;
     if(m_filterId.contains(filter))
         return;
     m_filterId.push_back(filter);
+    qDebug() << "register filter: " << filter;
 }
 

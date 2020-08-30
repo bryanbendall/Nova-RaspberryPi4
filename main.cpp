@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
 //    qputenv("QSG_INFO", "1");
 
 
-
     BluetoothWatcher watcher;
     HolleyCanControl holleyCan;
 #ifdef CAMARO

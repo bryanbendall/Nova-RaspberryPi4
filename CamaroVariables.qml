@@ -17,6 +17,7 @@ QtObject{
     property real fuelPressure: holleyCan.Fuel_Pressure
     property real methPressure: holleyCan.Input_7
     property real speed: holleyCan.Speed
+    property bool odIndicator: false
 
     property bool fanState: racepakCan.Output_1_Amps > 5
     property bool leftTurnState: false

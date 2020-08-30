@@ -19,14 +19,14 @@ Item {
             ctx.beginPath()
             ctx.strokeStyle = "#e5e5e5"
             ctx.lineWidth = 3
-            ctx.arc(width + 47, height/2, gauge.radius + 20, 0,
+            ctx.arc(width + 47, height/2, gauge.radius + 22, 0,
                     Math.PI * 2)
             ctx.stroke()
 
             ctx.beginPath()
             ctx.strokeStyle = "#2D2B2E"
             ctx.lineWidth = 5
-            ctx.arc(width + 47, height/2, gauge.radius + 15, 0,
+            ctx.arc(width + 47, height/2, gauge.radius + 17, 0,
                     Math.PI * 2)
             ctx.stroke()
         }
@@ -44,7 +44,7 @@ Item {
         property real radius: 250
 
         minimumValue: 0
-        maximumValue: 20
+        maximumValue: 25
         minorTickmarkCount: 0
         tickmarkStepSize: 5
 
@@ -57,7 +57,7 @@ Item {
                     ctx.reset()
 
                     ctx.beginPath()
-                    ctx.strokeStyle = gauge.value >= 15 ? "#B30C14" : "#5ADA17"
+                    ctx.strokeStyle = gauge.value >= 20 ? "#B30C14" : "#5ADA17"
                     ctx.lineWidth = gauge.lineWidth
                     ctx.arc(width, height - (gauge.height / 2) + 9,
                             gauge.radius, 0, Math.PI * 2)

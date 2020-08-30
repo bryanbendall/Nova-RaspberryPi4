@@ -18,7 +18,7 @@ NovaCanControl::~NovaCanControl()
 void NovaCanControl::connectToCan()
 {
 
-    system("sudo ip link set can1 up type can bitrate 250000");
+    //system("sudo ip link set can1 up type can bitrate 250000");
 
     if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
         qDebug() << "SocketCan not available!";
@@ -47,7 +47,7 @@ void NovaCanControl::connectToCan()
         return;
     }
 
-    qDebug() << "can0 connect successful";
+    qDebug() << "can1 connect successful";
 
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &NovaCanControl::onNovaDataChanged);

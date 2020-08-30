@@ -3,7 +3,7 @@ import GlobalVariables 1.0
 
 Text {
     id: gearText
-    property int gearNum: GlobalVariables.gear
+    property int gearNum: GlobalVariables.odIndicator ? 5 : GlobalVariables.gear
     color: "#FD9012"
     font.pointSize: 80
     text: gearNum

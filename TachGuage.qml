@@ -101,18 +101,18 @@ Item {
                                 valueToAngle(9000) - 88))
                     ctx.stroke()
 
-//                    ctx.beginPath()
+                    ctx.beginPath()
 //                    var grad2 = ctx.createRadialGradient(outerRadius, outerRadius, 200, outerRadius, outerRadius, 100)
 //                    grad2.addColorStop(0.7, "black")
 //                    grad2.addColorStop(0.6, value >=8000 ? "#B30C14" : "#FD9012") // Orange
 //                    grad2.addColorStop(0.5, "black")
-//                    ctx.strokeStyle = grad2
-//                    ctx.lineWidth = outerRadius //* 0.1
-//                    ctx.arc(outerRadius, outerRadius,
-//                            outerRadius - ctx.lineWidth / 2 - 20, degreesToRadians(
-//                                valueToAngle(0) - 90), degreesToRadians(
-//                                valueToAngle(guage.value) - 90))
-//                    ctx.stroke()
+                    ctx.strokeStyle = "#FD9012" //grad2
+                    ctx.lineWidth = outerRadius * 0.2
+                    ctx.arc(outerRadius, outerRadius,
+                            outerRadius - ctx.lineWidth / 2 - 20, degreesToRadians(
+                                valueToAngle(0) - 90), degreesToRadians(
+                                valueToAngle(guage.value) - 90))
+                    ctx.stroke()
 
                 }
             }

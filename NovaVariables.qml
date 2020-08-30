@@ -6,8 +6,8 @@ QtObject{
     //Nova
     property real rpm: holleyCan.RPM
     property real afr: holleyCan.AFR_Left
-    property real boost: holleyCan.AFR_Left
-    property real gasLevel: 50
+    property real boost: holleyCan.Boost
+    property real gasLevel: holleyCan.Input_11
     property real methLevel: 50
     property real gear: holleyCan.Gear
     property real cts: holleyCan.CTS
@@ -17,8 +17,9 @@ QtObject{
     property real fuelPressure: holleyCan.Fuel_Pressure
     property real methPressure: holleyCan.Input_7
     property real speed: holleyCan.Speed
+    property bool odIndicator: holleyCan.Output_29 > 0.0
 
-    property bool fanState: false
+    property bool fanState: holleyCan.Fan_1 > 0.0
     property bool leftTurnState: false
     property bool rightTurnState: false
     property bool highbeamIndicatorState: false
