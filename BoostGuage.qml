@@ -3,8 +3,12 @@ import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
 import GlobalVariables 1.0
+import GlobalColors 1.0
 
 Item {
+    id: root
+    property int maxBoost: 25
+    property int warnBoost: 21
 
     Canvas {
         anchors.left: gauge.left
@@ -17,14 +21,14 @@ Item {
             ctx.reset()
 
             ctx.beginPath()
-            ctx.strokeStyle = "#e5e5e5"
+            ctx.strokeStyle = GlobalColors.white
             ctx.lineWidth = 3
             ctx.arc(width + 47, height/2, gauge.radius + 22, 0,
                     Math.PI * 2)
             ctx.stroke()
 
             ctx.beginPath()
-            ctx.strokeStyle = "#2D2B2E"
+            ctx.strokeStyle = GlobalColors.gray
             ctx.lineWidth = 5
             ctx.arc(width + 47, height/2, gauge.radius + 17, 0,
                     Math.PI * 2)
@@ -44,7 +48,7 @@ Item {
         property real radius: 250
 
         minimumValue: 0
-        maximumValue: 25
+        maximumValue: root.maxBoost
         minorTickmarkCount: 0
         tickmarkStepSize: 5
 
@@ -57,7 +61,7 @@ Item {
                     ctx.reset()
 
                     ctx.beginPath()
-                    ctx.strokeStyle = gauge.value >= 20 ? "#B30C14" : "#5ADA17"
+                    ctx.strokeStyle = gauge.value >= 20 ? GlobalColors.red : GlobalColors.green
                     ctx.lineWidth = gauge.lineWidth
                     ctx.arc(width, height - (gauge.height / 2) + 9,
                             gauge.radius, 0, Math.PI * 2)
@@ -68,7 +72,7 @@ Item {
             tickmark: Rectangle {
                 width: 25
                 height: 3
-                color: "#e5e5e5"
+                color: GlobalColors.white
                 x: {
                     var r = Math.pow(gauge.radius + gauge.lineWidth / 2, 2)
                     var h = Math.pow(
@@ -82,7 +86,7 @@ Item {
             minorTickmark: Rectangle {
                 width: 7
                 height: 1
-                color: "#e5e5e5"
+                color: GlobalColors.white
                 x: {
                     var r = Math.pow(gauge.radius + gauge.lineWidth / 2, 2)
                     var h = Math.pow(
@@ -94,7 +98,7 @@ Item {
             }
 
             tickmarkLabel: Text {
-                color: styleData.value >= 16 ? "#B30C14" : "#e5e5e5"
+                color: styleData.value >= root.warnBoost ? GlobalColors.red : GlobalColors.white
                 text: styleData.value
                 x: {
                     var r = Math.pow(gauge.radius + gauge.lineWidth / 2 + 50, 2)

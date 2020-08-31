@@ -108,6 +108,5 @@ void HolleyCanControl::registerFilter(unsigned int filter)
     if(m_filterId.contains(filter))
         return;
     m_filterId.push_back(filter);
-    qDebug() << "register filter: " << filter;
 }
 

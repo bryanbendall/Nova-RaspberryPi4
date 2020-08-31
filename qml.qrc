@@ -16,7 +16,7 @@
         <file>Fonts/Orbitron-Black.ttf</file>
         <file>Fonts/RussoOne-Regular.ttf</file>
         <file>BoostGuage.qml</file>
-        <file>AFRGauge.qml</file>
+        <file>ClosedLoopGauge.qml</file>
         <file>FuelGauges.qml</file>
         <file>Guage2.qml</file>
         <file>Images/battery.svg</file>
@@ -36,5 +36,6 @@
         <file>InfoPanel.qml</file>
         <file>NovaVariables.qml</file>
         <file>CamaroVariables.qml</file>
+        <file>GlobalColors.qml</file>
     </qresource>
 </RCC>

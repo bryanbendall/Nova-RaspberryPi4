@@ -3,6 +3,7 @@ import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
 import GlobalVariables 1.0
+import GlobalColors 1.0
 
 Item {
 
@@ -12,20 +13,19 @@ Item {
         width: 540
         height: width
 
-        minimumValue: 10
-        maximumValue: 16
-        value: GlobalVariables.afr
+        minimumValue: -50
+        maximumValue: 50
+        value: GlobalVariables.closedLoopComp
 
         style: CircularGaugeStyle {
-            minimumValueAngle: 50
-            maximumValueAngle: 130
+            minimumValueAngle: 130
+            maximumValueAngle: 50
 
-            tickmarkStepSize: 2
+            tickmarkStepSize: 25
             tickmarkLabel: Text {
                 font.pixelSize: 18
                 text: styleData.value
-                color: styleData.value <= 10 ? "#B30C14" : styleData.value
-                                               >= 16 ? "#B30C14" : "#e5e5e5"
+                color: GlobalColors.white
                 antialiasing: true
             }
 
@@ -33,8 +33,7 @@ Item {
                 width: 3
                 height: 20
                 antialiasing: true
-                color: styleData.value <= 10 ? "#B30C14" : styleData.value
-                                               >= 16 ? "#B30C14" : "#e5e5e5"
+                color: GlobalColors.white
             }
 
             labelInset: -20
@@ -57,19 +56,12 @@ Item {
                     ctx.reset()
 
                     ctx.beginPath()
-                    var grad = ctx.createConicalGradient(
-                                outerRadius, outerRadius, degreesToRadians(
-                                    valueToAngle(guage.maximumValue)))
-                    grad.addColorStop(0.57, "#B30C14") // Red
-                    grad.addColorStop(0.58, "#e5e5e5") // White
-                    grad.addColorStop(0.72, "#e5e5e5") // White
-                    grad.addColorStop(0.75, "#B30C14") // Red
-                    ctx.strokeStyle = grad
+                    ctx.strokeStyle = GlobalColors.white
                     ctx.lineWidth = 3
                     ctx.arc(outerRadius, outerRadius,
-                            outerRadius - ctx.lineWidth / 2, degreesToRadians(
-                                valueToAngle(guage.minimumValue) - 90), degreesToRadians(
-                                valueToAngle(guage.maximumValue) - 90))
+                            outerRadius - ctx.lineWidth / 2,
+                            degreesToRadians(valueToAngle(guage.maximumValue) - 90),
+                            degreesToRadians(valueToAngle(guage.minimumValue) - 90))
                     ctx.stroke()
                 }
             }

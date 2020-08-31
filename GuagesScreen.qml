@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import GlobalVariables 1.0
+import GlobalColors 1.0
 
 Item {
     property real scalling: 2.1333
@@ -33,7 +34,7 @@ Item {
             width: 50
             height: 50
             imageSource: "Images/turn-signal.svg"
-            color: "#4CD90F"
+            color: GlobalColors.green
             visible: GlobalVariables.rightTurnState
         }
 
@@ -45,7 +46,7 @@ Item {
             width: 50
             height: 50
             imageSource: "Images/turn-signal.svg"
-            color: "#4CD90F"
+            color: GlobalColors.green
             visible: GlobalVariables.leftTurnState
             transform: Rotation{
                 angle: 180
@@ -57,10 +58,12 @@ Item {
         Column{
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            anchors.leftMargin: 80
+            anchors.leftMargin: 100
             spacing: 20
             Guage2{
                 id: tempGauge
+                width: 160
+                height: 160
                 minValue: 30
                 maxValue: 250
                 value: GlobalVariables.cts
@@ -73,12 +76,30 @@ Item {
                     width: 50
                     height: 50
                     imageSource: "Images/fan.svg"
-                    color: "#146AA1"
+                    color: GlobalColors.blue
                     visible: GlobalVariables.fanState
                 }
             }
+            Text{
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: GlobalVariables.afr > 16 | GlobalVariables.afr < 10 ? GlobalColors.red : GlobalColors.white
+                height: 80
+                font.pointSize: 40
+                text: GlobalVariables.afr.toFixed(1)
+                verticalAlignment: Text.AlignBottom
+                Text{
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: GlobalColors.white
+                    font.pointSize: 14
+                    text: "AFR"
+                }
+            }
+
             Guage2{
                 id: oilGauge
+                width: 160
+                height: 160
                 minValue: 0
                 maxValue: 100
                 value: GlobalVariables.oilPressure
@@ -92,7 +113,7 @@ Item {
             anchors.fill: parent
         }
 
-        AFRGauge{
+        ClosedLoopGauge{
             anchors.fill: parent
         }
 
@@ -101,7 +122,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.rightMargin: 170
             anchors.bottomMargin: 20
-            color: "#e5e5e5"
+            color: GlobalColors.white
             font.pointSize: 12
             text: "Boost"
         }
@@ -111,9 +132,9 @@ Item {
             anchors.bottom: parent.bottom
             anchors.leftMargin: 200
             anchors.bottomMargin: 20
-            color: "#e5e5e5"
+            color: GlobalColors.white
             font.pointSize: 12
-            text: "AFR"
+            text: "CL%"
         }
 
         TachGuage{
@@ -130,7 +151,7 @@ Item {
             width: 50
             height: 50
             imageSource: "Images/high-beam.svg"
-            color: "#146AA1"
+            color: GlobalColors.blue
             visible: GlobalVariables.highbeamIndicatorState
         }
 
@@ -142,7 +163,7 @@ Item {
             width: 50
             height: 50
             imageSource: "Images/parking-brake.svg"
-            color: "#B30C14"
+            color: GlobalColors.red
             visible: GlobalVariables.parkingBrakeState
         }
 

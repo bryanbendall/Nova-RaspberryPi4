@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
 
 
     qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
 
     engine.load(QUrl(QStringLiteral("qrc:/ComputerWrapper.qml")));
 

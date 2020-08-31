@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls 1.4
 import QtGraphicalEffects 1.0
 import GlobalVariables 1.0
+import GlobalColors 1.0
 
 Item {
     height: 450
@@ -30,7 +31,7 @@ Item {
                 width: 2
                 height: 40
                 gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.5) }
+                        GradientStop { position: 0.0; color: GlobalColors.gray }
                         GradientStop { position: 1.0; color: "transparent" }
                     }
                 Image{
@@ -49,7 +50,7 @@ Item {
             tickmarkLabel: Text {
                 font.pixelSize: 40
                 text: styleData.value >= 1 ? styleData.value / 1000 : null
-                color: styleData.value >= 8000 ? "#B30C14" : "#e5e5e5"
+                color: styleData.value >= 8000 ? GlobalColors.red : GlobalColors.white
                 antialiasing: true
             }
 
@@ -79,7 +80,7 @@ Item {
                     ctx.stroke()
 
                     ctx.beginPath()
-                    ctx.strokeStyle = "#FD9012" // Orange
+                    ctx.strokeStyle = GlobalColors.orange
                     ctx.lineWidth = outerRadius * 0.035
                     ctx.arc(outerRadius, outerRadius,
                             outerRadius - ctx.lineWidth / 2 - 8, degreesToRadians(
@@ -89,10 +90,10 @@ Item {
 
                     ctx.beginPath()
                     var grad = ctx.createConicalGradient(outerRadius, outerRadius, degreesToRadians(valueToAngle(9000) - 95))
-                    grad.addColorStop(0.0, "#B30C14") // Red
-                    grad.addColorStop(0.08, "#B30C14") // Red
-                    grad.addColorStop(0.15, "#e5e5e5") // White
-                    grad.addColorStop(1.0, "#e5e5e5") // White
+                    grad.addColorStop(0.0, GlobalColors.red)
+                    grad.addColorStop(0.08, GlobalColors.red)
+                    grad.addColorStop(0.15, GlobalColors.white)
+                    grad.addColorStop(1.0, GlobalColors.white)
                     ctx.strokeStyle = grad
                     ctx.lineWidth = 3
                     ctx.arc(outerRadius, outerRadius,
@@ -102,11 +103,7 @@ Item {
                     ctx.stroke()
 
                     ctx.beginPath()
-//                    var grad2 = ctx.createRadialGradient(outerRadius, outerRadius, 200, outerRadius, outerRadius, 100)
-//                    grad2.addColorStop(0.7, "black")
-//                    grad2.addColorStop(0.6, value >=8000 ? "#B30C14" : "#FD9012") // Orange
-//                    grad2.addColorStop(0.5, "black")
-                    ctx.strokeStyle = "#FD9012" //grad2
+                    ctx.strokeStyle = GlobalColors.orange
                     ctx.lineWidth = outerRadius * 0.2
                     ctx.arc(outerRadius, outerRadius,
                             outerRadius - ctx.lineWidth / 2 - 20, degreesToRadians(
@@ -125,19 +122,19 @@ Item {
         anchors.right: parent.right
         width: 50
         Text{
-            color: "#e5e5e5"
+            color: GlobalColors.white
             text: Math.floor(guage.value)
             font.pointSize: 14
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Text{
-            color: "#e5e5e5"
+            color: GlobalColors.white
             text: "RPM"
             font.pointSize: 10
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Text{
-            color: "#e5e5e5"
+            color: GlobalColors.white
             text: "1/1000"
             font.pointSize: 10
             anchors.horizontalCenter: parent.horizontalCenter

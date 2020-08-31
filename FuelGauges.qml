@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import GlobalVariables 1.0
+import GlobalColors 1.0
 
 Item {
     id: root
@@ -13,7 +14,7 @@ Item {
         anchors.bottom: parent.bottom
         width: 32
         height: 32
-        color: root.methValue < 20 ? "#B30C14" : "#e5e5e5"
+        color: root.methValue < 20 ? GlobalColors.red : GlobalColors.white
         imageSource: "Images/gasicon.svg"
         Text{
             anchors.right: parent.right
@@ -30,14 +31,14 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 10
         anchors.verticalCenter: methIcon.verticalCenter
-        color: root.methValue < 20 ? "#B30C14" : "#2D2B2E"
+        color: root.methValue < 20 ? GlobalColors.red : GlobalColors.gray
         height: 10
         Rectangle{
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             width: parent.width * (root.methValue / 100)
-            color: "#FD9012"
+            color: GlobalColors.orange
         }
     }
 
@@ -47,7 +48,7 @@ Item {
         anchors.bottom: methIcon.top
         width: 32
         height: 32
-        color: root.gasValue < 20 ? "#B30C14" : "#e5e5e5"
+        color: root.gasValue < 20 ? GlobalColors.red : GlobalColors.white
         imageSource: "Images/gasicon.svg"
     }
     Rectangle {
@@ -55,14 +56,14 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 10
         anchors.verticalCenter: gasIcon.verticalCenter
-        color: root.gasValue < 20 ? "#B30C14" : "#2D2B2E"
+        color: root.gasValue < 20 ? GlobalColors.red : GlobalColors.gray
         height: 10
         Rectangle{
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             width: parent.width * (root.gasValue / 100)
-            color: "#FD9012"
+            color: GlobalColors.orange
         }
     }
 
