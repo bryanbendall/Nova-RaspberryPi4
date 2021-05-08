@@ -53,7 +53,7 @@ Item {
             ctx.stroke()
 
             ctx.beginPath()
-            ctx.lineWidth = barWidth - 2
+            ctx.lineWidth = barWidth
             ctx.strokeStyle = value > highWarn ? GlobalColors.red : GlobalColors.orange
             ctx.arc(width/2, height/2, width / 2 - barWidth / 2 , degreesToRadians(90), valueToRadians(parent.value), false)
             ctx.stroke()

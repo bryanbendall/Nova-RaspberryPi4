@@ -1,18 +1,18 @@
-import QtQuick 2.0
+import QtQuick 2.7
 import QtQuick.Controls 2.0
 import GlobalVariables 1.0
 import GlobalColors 1.0
 
 Item {
-    property real scalling: 2.1333
+    //property real scalling: 2.1333
 
     //To Fix Screen Size
-    transform: Scale{
-        origin.x: 0
-        origin.y: 0
-        xScale: 1
-        yScale: scalling
-    }
+    //transform: Scale{
+        //origin.x: 0
+        //origin.y: 0
+        //xScale: 1
+        //yScale: scalling
+    //}
 
     Rectangle{
         width: parent.width
@@ -24,6 +24,31 @@ Item {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.left: tach.right
+        }
+
+        Row{
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 10
+            width: 500
+            leftPadding: 120
+            spacing: 20
+
+            ColorVectorImage{
+                width: 50
+                height: 50
+                imageSource: "Images/parking-brake.svg"
+                color: GlobalColors.red
+                visible: GlobalVariables.parkingBrakeState
+            }
+
+            ColorVectorImage{
+                width: 50
+                height: 50
+                imageSource: "Images/high-beam.svg"
+                color: GlobalColors.blue
+                visible: GlobalVariables.highbeamIndicatorState
+            }
         }
 
         ColorVectorImage{
@@ -80,21 +105,6 @@ Item {
                     visible: GlobalVariables.fanState
                 }
             }
-            Text{
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: GlobalVariables.afr > 16 | GlobalVariables.afr < 10 ? GlobalColors.red : GlobalColors.white
-                height: 80
-                font.pointSize: 40
-                text: GlobalVariables.afr.toFixed(1)
-                verticalAlignment: Text.AlignBottom
-                Text{
-                    anchors.top: parent.top
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: GlobalColors.white
-                    font.pointSize: 14
-                    text: "AFR"
-                }
-            }
 
             Guage2{
                 id: oilGauge
@@ -122,7 +132,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.rightMargin: 170
             anchors.bottomMargin: 20
-            color: GlobalColors.white
+            color: GlobalColors.gray
             font.pointSize: 12
             text: "Boost"
         }
@@ -132,7 +142,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.leftMargin: 200
             anchors.bottomMargin: 20
-            color: GlobalColors.white
+            color: GlobalColors.gray
             font.pointSize: 12
             text: "CL%"
         }
@@ -142,29 +152,34 @@ Item {
             anchors.centerIn: parent
         }
 
-        ColorVectorImage{
-            id: highbeamIndicator
-            anchors.right: parent.horizontalCenter
-            anchors.rightMargin: 10
-            anchors.bottom: parent.verticalCenter
-            anchors.bottomMargin: 70
-            width: 50
-            height: 50
-            imageSource: "Images/high-beam.svg"
-            color: GlobalColors.blue
-            visible: GlobalVariables.highbeamIndicatorState
-        }
+        Row{
+            id: afrRow
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 140
+            spacing: 15
 
-        ColorVectorImage{
-            anchors.left: parent.horizontalCenter
-            anchors.leftMargin: 10
-            anchors.bottom: parent.verticalCenter
-            anchors.bottomMargin: 70
-            width: 50
-            height: 50
-            imageSource: "Images/parking-brake.svg"
-            color: GlobalColors.red
-            visible: GlobalVariables.parkingBrakeState
+            Text{
+                id: afr1
+                property real val: 12.1
+                font.pointSize: 30
+                text: GlobalVariables.afr.toFixed(1)
+                color: GlobalVariables.afr > 16 | GlobalVariables.afr < 10 ? GlobalColors.red : GlobalColors.white
+            }
+            Text{
+                visible: GlobalVariables.secondAfr
+                font.pointSize: 30
+                text: GlobalVariables.afr2.toFixed(1)
+                color: GlobalVariables.afr > 16 | GlobalVariables.afr < 10 ? GlobalColors.red : GlobalColors.white
+            }
+        }
+        Text{
+            anchors.bottom: afrRow.top
+            anchors.bottomMargin: -5
+            anchors.horizontalCenter: afrRow.horizontalCenter
+            color: GlobalColors.gray
+            font.pointSize: 14
+            text: "AFR"
         }
 
         SpeedIndicator{

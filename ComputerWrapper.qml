@@ -9,6 +9,6 @@ Window {
     GuagesScreen{
         width: parent.width
         height: parent.height
-        scalling: 1
+        //scalling: 1
     }
 }

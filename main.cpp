@@ -18,19 +18,22 @@ int main(int argc, char *argv[])
 //    qDebug() << "wiring pi setup: " << wiringPiSetupSys();
 #endif
 
+      qputenv("QT_QPA_EGLFS_ALWAYS_SET_MODE", "1");
 //    qputenv("QT_LOGGING_RULES", "qt.qpa.*=true");
 //    qputenv("QSG_INFO", "1");
 
 
-    BluetoothWatcher watcher;
+    //BluetoothWatcher watcher;
     HolleyCanControl holleyCan;
 #ifdef CAMARO
     RacepakCanControl racepakCan;
     qmlRegisterSingletonType(QUrl("qrc:/CamaroVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
 #endif
 #ifdef NOVA
     NovaCanControl novaCan;
     qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
 #endif
 
 
@@ -79,12 +82,12 @@ int main(int argc, char *argv[])
 
         switch (i) {
         case 0:
-            v->setSource(QUrl("qrc:/CenterScreen.qml"));
-            qDebug() << "Center Screen";
-            break;
-        case 1:
             v->setSource(QUrl("qrc:/GuagesScreen.qml"));
             qDebug() << "Guages Screen";
+            break;
+        case 1:
+            v->setSource(QUrl("qrc:/CenterScreen.qml"));
+            qDebug() << "Center Screen";
             break;
         }
 

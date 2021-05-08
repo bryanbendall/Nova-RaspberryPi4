@@ -6,14 +6,14 @@ Text {
     id: mphText
     property real speed: GlobalVariables.speed
     color: GlobalColors.white
-    font.pointSize: 100
+    font.pointSize: 80
     text: Math.floor(speed * 1.609344)
 
     Text {
         anchors.top: parent.bottom
-        anchors.topMargin: -30
+        anchors.topMargin: -25
         anchors.horizontalCenter: parent.horizontalCenter
-        color: GlobalColors.white
+        color: GlobalColors.gray
         font.pointSize: 20
         text: "Kph"
     }

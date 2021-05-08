@@ -6,6 +6,8 @@ QtObject{
     //Nova
     property real rpm: holleyCan.RPM
     property real afr: holleyCan.AFR_Left
+    property real afr2: holleyCan.AFR_Right
+    property bool secondAfr: true
     property real boost: holleyCan.AFR_Left
     property real gasLevel: 50
     property real methLevel: 50
@@ -25,6 +27,7 @@ QtObject{
     property bool leftTurnState: false
     property bool rightTurnState: false
     property bool highbeamIndicatorState: false
+    property bool reverse: false
     property bool showGear: false
     property bool parkingBrakeState: false
 

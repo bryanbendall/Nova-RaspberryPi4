@@ -1,7 +1,7 @@
 #include "holleycancontrol.h"
 
 #include <QDebug>
-#include <QTimer>
+#include <QTime>
 
 HolleyCanControl::HolleyCanControl(QObject *parent)
     : QObject(parent)
@@ -19,7 +19,7 @@ HolleyCanControl::~HolleyCanControl()
 
 void HolleyCanControl::connectToCan()
 {
-    //system("sudo ip link set can0 up type can bitrate 1000000");
+    system("sudo ip link set can1 up type can bitrate 1000000");
 
     if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
         qDebug() << "SocketCan not available!";
@@ -28,9 +28,9 @@ void HolleyCanControl::connectToCan()
 
     QString errorString;
     bool connectionStatus;
-    m_can0 = QCanBus::instance()->createDevice(
-        QStringLiteral("socketcan"), QStringLiteral("can0"), &errorString);
-    if (!m_can0) {
+    m_can = QCanBus::instance()->createDevice(
+        QStringLiteral("socketcan"), QStringLiteral("can1"), &errorString);
+    if (!m_can) {
         // Error handling goes here
         qDebug() << "Creating Device Error: " << errorString;
         return;
@@ -38,11 +38,11 @@ void HolleyCanControl::connectToCan()
 
         setupFilters();
 
-        connect(m_can0, &QCanBusDevice::errorOccurred, [=](){qDebug() << "QCanBusDevice::errorOccurred - " << m_can0->errorString();});
-        connect(m_can0, &QCanBusDevice::stateChanged, [=](){qDebug() << "QCanBusDevice::stateChanged - " << m_can0->state();});
-        connect(m_can0, &QCanBusDevice::framesReceived, this, &HolleyCanControl::readFrame);
+        connect(m_can, &QCanBusDevice::errorOccurred, [=](){qDebug() << "QCanBusDevice::errorOccurred - " << m_can->errorString();});
+        connect(m_can, &QCanBusDevice::stateChanged, [=](){qDebug() << "QCanBusDevice::stateChanged - " << m_can->state();});
+        connect(m_can, &QCanBusDevice::framesReceived, this, &HolleyCanControl::readFrame);
 
-        connectionStatus = m_can0->connectDevice();
+        connectionStatus = m_can->connectDevice();
     }
 
     if(!connectionStatus){
@@ -61,13 +61,33 @@ void HolleyCanControl::connectToCan()
 
 void HolleyCanControl::readFrame()
 {
-    for(int i = 0; i < m_can0->framesAvailable(); i++){
+    for(int i = 0; i < m_can->framesAvailable(); i++){
         //qDebug() << "Frames available: " << m_can0->framesAvailable();
-        QCanBusFrame frame = m_can0->readFrame();
+        QCanBusFrame frame = m_can->readFrame();
         //qDebug() << "Recieved Frame: " << frame.frameId();
 
         unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
         m_data[index] = getFloat(frame);
+
+        if(index == 220){
+            // Odometer calculation
+            static double speed1 = 0.0;
+            static double speed2 = 0.0;
+            static QTime time;
+            static bool setupDone = false;
+            if(!setupDone){
+                time.start();
+                setupDone = true;
+            }
+
+            double elapsedHours = (double)time.restart() * 2.7777777777778E-7;
+            m_odometer += ((speed1 + speed2) / 2.0) * elapsedHours;
+
+            speed2 = speed1;
+            speed1 = (double)getFloat(frame);
+
+        }
+
     }
 
 }
@@ -87,7 +107,7 @@ void HolleyCanControl::setupFilters()
     }
 
     // apply filter
-    m_can0->setConfigurationParameter(QCanBusDevice::RawFilterKey, QVariant::fromValue(filterList));
+    m_can->setConfigurationParameter(QCanBusDevice::RawFilterKey, QVariant::fromValue(filterList));
 }
 
 float HolleyCanControl::getFloat(QCanBusFrame &frame)

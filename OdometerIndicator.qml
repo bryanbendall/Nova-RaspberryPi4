@@ -9,7 +9,7 @@ Image{
        anchors.topMargin: 10
        anchors.horizontalCenter: parent.horizontalCenter
        Text {
-           color: GlobalColors.white
+           color: GlobalColors.gray
            text: "Odometer"
            font.pointSize: 12
            anchors.horizontalCenter: parent.horizontalCenter

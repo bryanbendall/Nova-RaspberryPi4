@@ -4,7 +4,7 @@ import GlobalColors 1.0
 
 Text {
     id: gearText
-    property string gearNum: GlobalVariables.parkNeutral ? "P/N" : GlobalVariables.odIndicator ? 5 : GlobalVariables.gear.toFixed(0)
+    property string gearNum: GlobalVariables.parkNeutral ? "P/N" : GlobalVariables.reverse ? "R" : GlobalVariables.overDrive ? 5 : GlobalVariables.gear.toFixed(0)
     color: GlobalColors.orange
     font.pointSize: GlobalVariables.parkNeutral ? 45 : 70
     text: gearNum
@@ -16,7 +16,7 @@ Text {
         anchors.top: parent.bottom
         anchors.topMargin: -30
         anchors.horizontalCenter: parent.horizontalCenter
-        color: GlobalColors.orange
+        color: GlobalColors.gray
         font.pointSize: 14
         text: "Gear"
     }

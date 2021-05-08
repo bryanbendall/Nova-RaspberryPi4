@@ -31,8 +31,8 @@ Item {
         Plugin {
             id: mapboxglPlugin
             name: "mapboxgl"
-            PluginParameter { name: "mapboxgl.mapping.additional_style_urls";
-                              value: "http://localhost:7000/dark-matter.style" }
+//            PluginParameter { name: "mapboxgl.mapping.additional_style_urls";
+//                              value: "http://localhost:7000/dark-matter.style" }
 
             PluginParameter { name: "mapboxgl.mapping.cache.memory";
                               value: "true" }
@@ -45,7 +45,7 @@ Item {
             anchors.topMargin: 50
             font.pointSize: 20
             color: "white"
-            text: "Output value test: " + holleyCan.Output_62.toFixed(2)
+            text: "Odometer test: " + holleyCan.Odometer + " Miles";
         }
 
     }

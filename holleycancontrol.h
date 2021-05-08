@@ -11,7 +11,7 @@ class HolleyCanControl : public QObject
 {
     Q_OBJECT
 
-    QCanBusDevice* m_can0;
+    QCanBusDevice* m_can;
     QTimer* m_timer;
     bool m_setupDone = false;
     float m_data[440] = {0.0f};
@@ -33,6 +33,8 @@ private:
     float getFloat(QCanBusFrame& frame);
     void registerFilter(unsigned int filter);
 
+    double m_odometer = 0.0;
+    Q_PROPERTY(double Odometer MEMBER m_odometer NOTIFY onHolleyDataChanged)
 
     Q_PROPERTY(float RTC                    READ RTC                NOTIFY onHolleyDataChanged) const float& RTC()                  {unsigned int i = 0; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float RPM                    READ RPM                NOTIFY onHolleyDataChanged) const float& RPM()                  {unsigned int i = 1; registerFilter(i); return m_data[i];}
