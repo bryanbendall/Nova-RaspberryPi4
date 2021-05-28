@@ -36,7 +36,9 @@ private:
     double m_odometer = 0.0;
     Q_PROPERTY(double Odometer MEMBER m_odometer NOTIFY onHolleyDataChanged)
 
-    Q_PROPERTY(float RTC                    READ RTC                NOTIFY onHolleyDataChanged) const float& RTC()                  {unsigned int i = 0; registerFilter(i); return m_data[i];}
+#include "holleyvariablesv6.h"
+
+
     Q_PROPERTY(float RPM                    READ RPM                NOTIFY onHolleyDataChanged) const float& RPM()                  {unsigned int i = 1; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Inj_PW                 READ Inj_PW             NOTIFY onHolleyDataChanged) const float& Inj_PW()               {unsigned int i = 2; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Duty_Cycle             READ Duty_Cycle         NOTIFY onHolleyDataChanged) const float& Duty_Cycle()           {unsigned int i = 3; registerFilter(i); return m_data[i];}

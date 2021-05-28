@@ -53,7 +53,9 @@ HEADERS += \
     holleycancontrol.h \
     bluetoothwatcher.h \
     racepakcancontrol.h \
-    novacancontrol.h
+    novacancontrol.h \
+    holleyvariablesv6.h \
+    holleyvariablesv4.h
 
 INCLUDEPATH += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/ \

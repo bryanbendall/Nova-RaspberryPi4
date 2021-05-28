@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtPositioning 5.6
 import QtLocation 5.6
+import QtQuick.Controls 2.4
 
 Item {
     transform: Rotation{
@@ -46,6 +47,12 @@ Item {
             font.pointSize: 20
             color: "white"
             text: "Odometer test: " + holleyCan.Odometer + " Miles";
+        }
+
+        Button{
+            text: "Push"
+            font.pointSize: 50
+            onClicked: console.log("button pushed!!!!")
         }
 
     }
