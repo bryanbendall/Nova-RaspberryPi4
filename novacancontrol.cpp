@@ -81,7 +81,7 @@ void NovaCanControl::readFrame()
         case ID_REAR_MODULE:
             switch(frame.payload().at(2)){
                 case PM_PIN_11_ADDR: m_reverseLights = state; break;
-                case PM_PIN_12_ADDR: frame.payload().at(3) > 250 ? m_brakeLights = true : m_brakeLights = false; break;
+                case PM_PIN_12_ADDR: (unsigned char)frame.payload().at(3) > 250 ? m_brakeLights = true : m_brakeLights = false; break;
             }
             break;
         case ID_FRONT_LIGHT_MODULE:

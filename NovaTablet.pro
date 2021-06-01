@@ -1,14 +1,19 @@
 QT += quick network location serialport serialbus
 CONFIG += c++11
 
+include(QtWebApp/QtWebApp/httpserver/httpserver.pri)
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-CONFIG(Nova):DEFINES += NOVA
-CONFIG(Camaro):DEFINES += CAMARO
+CONFIG(Nova):DEFINES += NOVA \
+                        HOLLEYV4
+CONFIG(Camaro):DEFINES += CAMARO \
+                          HOLLEYV6
+CONFIG(Pc):DEFINES += HOLLEYV4
 
 #QMAKE_POST_LINK += sudo setpcap CAP_NET_ADMIN=eip NovaTablet
 
@@ -28,7 +33,8 @@ SOURCES += \
     holleycancontrol.cpp \
     bluetoothwatcher.cpp \
     racepakcancontrol.cpp \
-    novacancontrol.cpp
+    novacancontrol.cpp \
+    wificontroller.cpp
 
 RESOURCES += qml.qrc \
     res.qrc
@@ -55,10 +61,12 @@ HEADERS += \
     racepakcancontrol.h \
     novacancontrol.h \
     holleyvariablesv6.h \
-    holleyvariablesv4.h
+    holleyvariablesv4.h \
+    wificontroller.h
 
 INCLUDEPATH += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/ \
     ../../Downloads/spi_can/ \
+    QtWebApp/QtWebApp/httpserver/ \
 
 DISTFILES +=

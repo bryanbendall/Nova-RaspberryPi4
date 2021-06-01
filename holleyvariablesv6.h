@@ -128,7 +128,7 @@
     Q_PROPERTY(float Inj_Driver_25_PW       READ Inj_Driver_25_PW   NOTIFY onHolleyDataChanged) const float& Inj_Driver_25_PW()     {unsigned int i = 124; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Inj_Driver_26_PW       READ Inj_Driver_26_PW   NOTIFY onHolleyDataChanged) const float& Inj_Driver_26_PW()     {unsigned int i = 125; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Inj_Driver_27_PW       READ Inj_Driver_27_PW   NOTIFY onHolleyDataChanged) const float& Inj_Driver_27_PW()     {unsigned int i = 126; registerFilter(i); return m_data[i];}
-    Q_PROPERTY(float Inj_Driver_28_PW       READ Inj_Driver_28_PW   NOTIFY onHolleyDataChanged) const float& Inj_Driver_28_PW()     {unsigned int i = 127; registerFilter(i); return m_data[i
+    Q_PROPERTY(float Inj_Driver_28_PW       READ Inj_Driver_28_PW   NOTIFY onHolleyDataChanged) const float& Inj_Driver_28_PW()     {unsigned int i = 127; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Cyl_1_Fuel_Cor         READ Cyl_1_Fuel_Cor     NOTIFY onHolleyDataChanged) const float& Cyl_1_Fuel_Cor()       {unsigned int i = 128; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Cyl_2_Fuel_Cor         READ Cyl_2_Fuel_Cor     NOTIFY onHolleyDataChanged) const float& Cyl_2_Fuel_Cor()       {unsigned int i = 129; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Cyl_3_Fuel_Cor         READ Cyl_3_Fuel_Cor     NOTIFY onHolleyDataChanged) const float& Cyl_3_Fuel_Cor()       {unsigned int i = 130; registerFilter(i); return m_data[i];}
@@ -163,7 +163,7 @@
     Q_PROPERTY(float Cyl_16_Timing_Cor      READ Cyl_16_Timing_Cor  NOTIFY onHolleyDataChanged) const float& Cyl_16_Timing_Cor()    {unsigned int i = 159; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float DI_Target_FP           READ DI_Target_FP       NOTIFY onHolleyDataChanged) const float& DI_Target_FP()         {unsigned int i = 160; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Boost_PSIG             READ Boost_PSIG         NOTIFY onHolleyDataChanged) const float& Boost_PSIG()           {unsigned int i = 161; registerFilter(i); return m_data[i];}
-    Q_PROPERTY(float Staging_Input_1        READ Staging_Input_1    NOTIFY onHolleyDataChanged) const float& Staging_Input_1()      {unsigned int i = 162; registerFilter(i); return m_data[i];} 
+    Q_PROPERTY(float Staging_Input_1        READ Staging_Input_1    NOTIFY onHolleyDataChanged) const float& Staging_Input_1()      {unsigned int i = 162; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Staging_Input_2        READ Staging_Input_2    NOTIFY onHolleyDataChanged) const float& Staging_Input_2()      {unsigned int i = 163; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Staging_Output         READ Staging_Output     NOTIFY onHolleyDataChanged) const float& Staging_Output()       {unsigned int i = 164; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Boost_Gear             READ Boost_Gear         NOTIFY onHolleyDataChanged) const float& Boost_Gear()           {unsigned int i = 165; registerFilter(i); return m_data[i];}

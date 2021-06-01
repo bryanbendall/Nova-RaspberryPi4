@@ -10,6 +10,11 @@
 #include "holleycancontrol.h"
 #include "racepakcancontrol.h"
 #include "novacancontrol.h"
+#include <QSettings>
+#include "httplistener.h"
+#include "wificontroller.h"
+
+using namespace stefanfrings;
 
 int main(int argc, char *argv[])
 {
@@ -114,7 +119,14 @@ int main(int argc, char *argv[])
         return -1;
 #endif
 
+    // Http server from:
+    // http://stefanfrings.de/qtwebapp/tutorial/index.html#part2
+    QSettings* listenerSettings = new QSettings(":/etc/server.ini",QSettings::IniFormat,&app);
+    qDebug("config file loaded");
+    listenerSettings->beginGroup("listener");
 
+    // Start the HTTP server
+    new HttpListener(listenerSettings, new WifiController(&app), &app);
 
     int r = app.exec();
 #if defined(CAMARO) || defined(NOVA)
