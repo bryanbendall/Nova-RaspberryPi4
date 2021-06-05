@@ -23,18 +23,18 @@ CONFIG(Pc):DEFINES += HOLLEYV4
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
+    src/main.cpp \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringPi.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softPwm.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softTone.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/piHiPri.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringSerial.c \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringPiSPI.c \
-    holleycancontrol.cpp \
-    bluetoothwatcher.cpp \
-    racepakcancontrol.cpp \
-    novacancontrol.cpp \
-    wificontroller.cpp
+    src/holleycancontrol.cpp \
+    src/bluetoothwatcher.cpp \
+    src/racepakcancontrol.cpp \
+    src/novacancontrol.cpp \
+    src/wificontroller.cpp
 
 RESOURCES += qml.qrc \
     res.qrc
@@ -56,13 +56,13 @@ HEADERS += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/softTone.h \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringSerial.h \
     ../../Downloads/wiringPi-8d188fa/wiringPi/wiringPiSPI.h \
-    holleycancontrol.h \
-    bluetoothwatcher.h \
-    racepakcancontrol.h \
-    novacancontrol.h \
-    holleyvariablesv6.h \
-    holleyvariablesv4.h \
-    wificontroller.h
+    src/holleycancontrol.h \
+    src/bluetoothwatcher.h \
+    src/racepakcancontrol.h \
+    src/novacancontrol.h \
+    src/holleyvariablesv6.h \
+    src/holleyvariablesv4.h \
+    src/wificontroller.h
 
 INCLUDEPATH += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/ \

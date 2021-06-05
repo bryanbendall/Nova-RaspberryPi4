@@ -15,8 +15,9 @@ Item {
         width: 32
         height: 32
         color: root.methValue < 20 ? GlobalColors.red : GlobalColors.white
-        imageSource: "Images/gasicon.svg"
+        imageSource: "../../Images/gasicon.svg"
         Text{
+            visible: GlobalVariables.methSecondLevel
             anchors.right: parent.right
             anchors.rightMargin: 14
             anchors.bottom: parent.bottom
@@ -49,7 +50,7 @@ Item {
         width: 32
         height: 32
         color: root.gasValue < 20 ? GlobalColors.red : GlobalColors.white
-        imageSource: "Images/gasicon.svg"
+        imageSource: "../../Images/gasicon.svg"
     }
     Rectangle {
         anchors.left: gasIcon.right

@@ -43,7 +43,7 @@ Item {
                 width: 15
                 height: 45
                 y: -230
-                source: "Images/Needle.png"
+                source: "../../Images/Needle.png"
             }
 
             function degreesToRadians(degrees) {

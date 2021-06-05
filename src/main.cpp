@@ -16,6 +16,40 @@
 
 using namespace stefanfrings;
 
+void registerQmlGlobals(){
+#ifdef CAMARO
+    qmlRegisterSingletonType(QUrl("qrc:/qml/GlobalVariables/CamaroVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+#else
+    qmlRegisterSingletonType(QUrl("qrc:/qml/GlobalVariables/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
+#endif
+
+    qmlRegisterSingletonType(QUrl("qrc:/qml/GlobalVariables/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
+}
+
+void setupFont(){
+//    qint32 fontId = QFontDatabase::addApplicationFont(":/Fonts/Orbitron-Black.ttf");
+    qint32 fontId = QFontDatabase::addApplicationFont(":/Fonts/RussoOne-Regular.ttf");
+    QStringList fontList = QFontDatabase::applicationFontFamilies(fontId);
+
+    QString family = fontList.at(0);
+    QGuiApplication::setFont(QFont(family));
+}
+
+void hideCursor(QGuiApplication& app){
+    app.setOverrideCursor(Qt::BlankCursor);
+}
+
+void setupHttpServer(QGuiApplication& app){
+    // Http server from:
+    // http://stefanfrings.de/qtwebapp/tutorial/index.html#part2
+    QSettings* listenerSettings = new QSettings(":/etc/server.ini",QSettings::IniFormat,&app);
+    qDebug("config file loaded");
+    listenerSettings->beginGroup("listener");
+
+    // Start the HTTP server
+    new HttpListener(listenerSettings, new WifiController(&app), &app);
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -32,28 +66,26 @@ int main(int argc, char *argv[])
     HolleyCanControl holleyCan;
 #ifdef CAMARO
     RacepakCanControl racepakCan;
-    qmlRegisterSingletonType(QUrl("qrc:/CamaroVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
-    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
-#endif
-#ifdef NOVA
+#else
     NovaCanControl novaCan;
-    qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
-    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
 #endif
 
-
+    registerQmlGlobals();
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-//    qint32 fontId = QFontDatabase::addApplicationFont(":/Fonts/Orbitron-Black.ttf");
-    qint32 fontId = QFontDatabase::addApplicationFont(":/Fonts/RussoOne-Regular.ttf");
-    QStringList fontList = QFontDatabase::applicationFontFamilies(fontId);
+    setupFont();
+    hideCursor(app);
+    setupHttpServer(app);
 
-    QString family = fontList.at(0);
-    QGuiApplication::setFont(QFont(family));
-
-////    app.setOverrideCursor(Qt::BlankCursor);
+// This is for pc testing only
+#if !defined(CAMARO) && !defined(NOVA)
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("holleyCan", &holleyCan);
+    engine.rootContext()->setContextProperty("novaCan", &novaCan);
+    engine.load(QUrl(QStringLiteral("qrc:/qml/Screens/ComputerWrapper.qml")));
+#endif
 
 #if defined(CAMARO) || defined(NOVA)
     QList<QScreen *> screens = app.screens();
@@ -87,11 +119,11 @@ int main(int argc, char *argv[])
 
         switch (i) {
         case 0:
-            v->setSource(QUrl("qrc:/GuagesScreen.qml"));
+            v->setSource(QUrl("qrc:/qml/Screens/GuagesScreen.qml"));
             qDebug() << "Guages Screen";
             break;
         case 1:
-            v->setSource(QUrl("qrc:/CenterScreen.qml"));
+            v->setSource(QUrl("qrc:/qml/Screens/CenterScreen.qml"));
             qDebug() << "Center Screen";
             break;
         }
@@ -100,35 +132,8 @@ int main(int argc, char *argv[])
     }
 #endif
 
-#if !defined(CAMARO) && !defined(NOVA)
-    QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("holleyCan", &holleyCan);
-#ifdef CAMARO
-    engine.rootContext()->setContextProperty("racepakCan", &racepakCan);
-#endif
-    NovaCanControl novaCan;
-    engine.rootContext()->setContextProperty("novaCan", &novaCan);
-
-
-    qmlRegisterSingletonType(QUrl("qrc:/NovaVariables.qml"), "GlobalVariables", 1, 0, "GlobalVariables");
-    qmlRegisterSingletonType(QUrl("qrc:/GlobalColors.qml"), "GlobalColors", 1, 0, "GlobalColors");
-
-    engine.load(QUrl(QStringLiteral("qrc:/ComputerWrapper.qml")));
-
-    if (engine.rootObjects().isEmpty())
-        return -1;
-#endif
-
-    // Http server from:
-    // http://stefanfrings.de/qtwebapp/tutorial/index.html#part2
-    QSettings* listenerSettings = new QSettings(":/etc/server.ini",QSettings::IniFormat,&app);
-    qDebug("config file loaded");
-    listenerSettings->beginGroup("listener");
-
-    // Start the HTTP server
-    new HttpListener(listenerSettings, new WifiController(&app), &app);
-
     int r = app.exec();
+
 #if defined(CAMARO) || defined(NOVA)
     qDeleteAll(views);
 #endif

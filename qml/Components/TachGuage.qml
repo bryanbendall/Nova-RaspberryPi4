@@ -22,7 +22,7 @@ Item {
         style: CircularGaugeStyle {
             needle: Image{
                 y: -120
-                source: "Images/Needle.png"
+                source: "../../Images/Needle.png"
             }
 
             minorTickmarkCount: 3
@@ -35,7 +35,7 @@ Item {
                         GradientStop { position: 1.0; color: "transparent" }
                     }
                 Image{
-                    source: styleData.value / 250 % 2 ? "" : "Images/Tickmark-Alternate.png"
+                    source: styleData.value / 250 % 2 ? "" : "../../Images/Tickmark-Alternate.png"
                     x: -10
                     y: -14
                 }
@@ -57,7 +57,7 @@ Item {
             tickmarkStepSize: 1000
             tickmarkInset: 5
             tickmark: Image{
-                source: styleData.value >= 8000 ? "Images/Tickmark-Red.png" : "Images/Tickmark.png"
+                source: styleData.value >= 8000 ? "../../Images/Tickmark-Red.png" : "../../Images/Tickmark.png"
             }
 
             function degreesToRadians(degrees) {

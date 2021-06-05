@@ -11,6 +11,7 @@ QtObject{
     property real boost: holleyCan.Boost
     property real gasLevel: holleyCan.Input_11
     property real methLevel: 50
+    property bool methSecondLevel: true
     property real gear: holleyCan.Gear
     property real cts: holleyCan.CTS
     property real oilPressure: holleyCan.Oil_Pressure
@@ -20,6 +21,7 @@ QtObject{
     property real methPressure: holleyCan.Input_7
     property real speed: holleyCan.Speed
     property real closedLoopComp: holleyCan.CL_Comp
+    property bool showOdometer: true
 
     property bool overDrive: (holleyCan.Output_29 > 0.0)
     property bool parkNeutral: (holleyCan.Input_30 > 0.0)

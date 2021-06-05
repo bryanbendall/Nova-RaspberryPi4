@@ -2,6 +2,8 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import GlobalVariables 1.0
 import GlobalColors 1.0
+import "../Components"
+import "../Panels"
 
 Item {
     //property real scalling: 2.1333
@@ -37,7 +39,7 @@ Item {
             ColorVectorImage{
                 width: 50
                 height: 50
-                imageSource: "Images/parking-brake.svg"
+                imageSource: "../../Images/parking-brake.svg"
                 color: GlobalColors.red
                 visible: GlobalVariables.parkingBrakeState
             }
@@ -45,7 +47,7 @@ Item {
             ColorVectorImage{
                 width: 50
                 height: 50
-                imageSource: "Images/high-beam.svg"
+                imageSource: "../../Images/high-beam.svg"
                 color: GlobalColors.blue
                 visible: GlobalVariables.highbeamIndicatorState
             }
@@ -58,7 +60,7 @@ Item {
             anchors.leftMargin: 130
             width: 50
             height: 50
-            imageSource: "Images/turn-signal.svg"
+            imageSource: "../../Images/turn-signal.svg"
             color: GlobalColors.green
             visible: GlobalVariables.rightTurnState
         }
@@ -70,7 +72,7 @@ Item {
             anchors.rightMargin: 130
             width: 50
             height: 50
-            imageSource: "Images/turn-signal.svg"
+            imageSource: "../../Images/turn-signal.svg"
             color: GlobalColors.green
             visible: GlobalVariables.leftTurnState
             transform: Rotation{
@@ -94,13 +96,13 @@ Item {
                 value: GlobalVariables.cts
                 highWarn: 200
                 units: "°F"
-                image: "Images/water-temp.svg"
+                image: "../../Images/water-temp.svg"
                 ColorVectorImage{
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     width: 50
                     height: 50
-                    imageSource: "Images/fan.svg"
+                    imageSource: "../../Images/fan.svg"
                     color: GlobalColors.blue
                     visible: GlobalVariables.fanState
                 }
@@ -115,7 +117,7 @@ Item {
                 value: GlobalVariables.oilPressure
                 lowWarn: 5
                 units: "PSI"
-                image: "Images/engine-oil.svg"
+                image: "../../Images/engine-oil.svg"
             }
         }
 

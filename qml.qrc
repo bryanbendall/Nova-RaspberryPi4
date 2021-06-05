@@ -1,24 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>IndicatorButton.qml</file>
-        <file>GuagesScreen.qml</file>
-        <file>CenterScreen.qml</file>
-        <file>TachGuage.qml</file>
-        <file>ComputerWrapper.qml</file>
         <file>Images/Tickmark.png</file>
         <file>Images/Tickmark-Red.png</file>
         <file>Images/Needle.png</file>
         <file>Images/Tickmark-Alternate.png</file>
-        <file>GearIndicator.qml</file>
-        <file>SpeedIndicator.qml</file>
-        <file>OdometerIndicator.qml</file>
         <file>Images/OdometerBackground.png</file>
         <file>Fonts/Orbitron-Black.ttf</file>
         <file>Fonts/RussoOne-Regular.ttf</file>
-        <file>BoostGuage.qml</file>
-        <file>ClosedLoopGauge.qml</file>
-        <file>FuelGauges.qml</file>
-        <file>Guage2.qml</file>
         <file>Images/battery.svg</file>
         <file>Images/fan.svg</file>
         <file>Images/fog-lights.svg</file>
@@ -29,13 +17,25 @@
         <file>Images/parking-brake.svg</file>
         <file>Images/transmission-temp.svg</file>
         <file>Images/turn-signal.svg</file>
-        <file>ColorVectorImage.qml</file>
         <file>Images/engine-light.svg</file>
         <file>Images/engine-oil.svg</file>
         <file>Images/water-temp.svg</file>
-        <file>InfoPanel.qml</file>
-        <file>NovaVariables.qml</file>
-        <file>CamaroVariables.qml</file>
-        <file>GlobalColors.qml</file>
+        <file>qml/Components/BoostGuage.qml</file>
+        <file>qml/Components/ClosedLoopGauge.qml</file>
+        <file>qml/Components/ColorVectorImage.qml</file>
+        <file>qml/Components/FuelGauges.qml</file>
+        <file>qml/Components/GearIndicator.qml</file>
+        <file>qml/Components/Guage2.qml</file>
+        <file>qml/Components/IndicatorButton.qml</file>
+        <file>qml/Components/OdometerIndicator.qml</file>
+        <file>qml/Components/SpeedIndicator.qml</file>
+        <file>qml/Components/TachGuage.qml</file>
+        <file>qml/GlobalVariables/CamaroVariables.qml</file>
+        <file>qml/GlobalVariables/GlobalColors.qml</file>
+        <file>qml/GlobalVariables/NovaVariables.qml</file>
+        <file>qml/Panels/InfoPanel.qml</file>
+        <file>qml/Screens/CenterScreen.qml</file>
+        <file>qml/Screens/ComputerWrapper.qml</file>
+        <file>qml/Screens/GuagesScreen.qml</file>
     </qresource>
 </RCC>

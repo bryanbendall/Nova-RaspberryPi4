@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import GlobalVariables 1.0
+import "../Components"
 
 Item {
     id: root
@@ -24,7 +25,7 @@ Item {
                 lowWarn: 10
                 decialPlaces: 1
                 units: "V"
-                image: "Images/battery.svg"
+                image: "../../Images/battery.svg"
             }
             Guage2{
                 width: root.guageSize
@@ -34,7 +35,7 @@ Item {
                 highWarn: 200
                 value: GlobalVariables.lineTemp
                 units: "°F"
-                image: "Images/transmission-temp.svg"
+                image: "../../Images/transmission-temp.svg"
             }
         }
 
@@ -48,7 +49,7 @@ Item {
                 value: GlobalVariables.fuelPressure
                 lowWarn: 30
                 units: "Gas Psi"
-                image: "Images/gasicon.svg"
+                image: "../../Images/gasicon.svg"
             }
             Guage2{
                 width: root.guageSize
@@ -59,7 +60,7 @@ Item {
                 lowWarn: 30
                 showLowWarn: false
                 units: "Meth Psi"
-                image: "Images/gasicon.svg"
+                image: "../../Images/gasicon.svg"
             }
         }
 
