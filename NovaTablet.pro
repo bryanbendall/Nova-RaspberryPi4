@@ -12,7 +12,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG(Nova):DEFINES += NOVA \
                         HOLLEYV4
 CONFIG(Camaro):DEFINES += CAMARO \
-                          HOLLEYV6
+                          HOLLEYV4
 CONFIG(Pc):DEFINES += HOLLEYV4
 
 #QMAKE_POST_LINK += sudo setpcap CAP_NET_ADMIN=eip NovaTablet
@@ -69,4 +69,5 @@ INCLUDEPATH += \
     ../../Downloads/spi_can/ \
     QtWebApp/QtWebApp/httpserver/ \
 
-DISTFILES +=
+DISTFILES += \
+

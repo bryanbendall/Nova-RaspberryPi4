@@ -6,7 +6,7 @@ Item {
     id: root
 
     property real gasValue: GlobalVariables.gasLevel
-    property real methValue: GlobalVariables.methLevel
+    property real methValue: GlobalVariables.methSecondLevel ? GlobalVariables.methLevel : GlobalVariables.gasLevel2
 
     ColorVectorImage{
         id: methIcon

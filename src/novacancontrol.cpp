@@ -47,7 +47,7 @@ void NovaCanControl::connectToCan()
         return;
     }
 
-    qDebug() << "can1 connect successful";
+    qDebug() << "can0 connect successful";
 
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &NovaCanControl::onNovaDataChanged);

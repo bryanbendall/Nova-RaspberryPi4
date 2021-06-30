@@ -51,7 +51,7 @@ void HolleyCanControl::connectToCan()
     }
 
     m_setupDone = true;
-    qDebug() << "can0 connect successful";
+    qDebug() << "can1 connect successful";
 
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &HolleyCanControl::onHolleyDataChanged);
@@ -65,6 +65,18 @@ void HolleyCanControl::readFrame()
         //qDebug() << "Frames available: " << m_can0->framesAvailable();
         QCanBusFrame frame = m_can->readFrame();
         //qDebug() << "Recieved Frame: " << frame.frameId();
+
+
+        /////////////////////////////////////////////////////////////////////
+        // Bail if its not from the ecu
+
+        unsigned char sourceId = (frame.frameId() >> 11) & 0x07;
+
+        if(sourceId != 0x02){
+            //qDebug() << "Bailing because not ecu";
+            return;
+        }
+        /////////////////////////////////////////////////////////////////////
 
         unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
         m_data[index] = getFloat(frame);

@@ -21,6 +21,7 @@ QtObject{
     property real fuelPressure: holleyCan.Fuel_Pressure
     property real methPressure: holleyCan.Input_2
     property real speed: holleyCan.Input_6
+    property bool useKph: false
     property real closedLoopComp: holleyCan.CL_Comp
     property bool showOdometer: false
 

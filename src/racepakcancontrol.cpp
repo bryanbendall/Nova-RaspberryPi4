@@ -18,7 +18,7 @@ RacepakCanControl::~RacepakCanControl()
 void RacepakCanControl::connectToCan()
 {
 
-    system("sudo ip link set can1 up type can bitrate 250000");
+    system("sudo ip link set can0 up type can bitrate 250000");
 
     if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
         qDebug() << "SocketCan not available!";
@@ -28,7 +28,7 @@ void RacepakCanControl::connectToCan()
     QString errorString;
     bool connectionStatus;
     m_can1 = QCanBus::instance()->createDevice(
-        QStringLiteral("socketcan"), QStringLiteral("can1"), &errorString);
+        QStringLiteral("socketcan"), QStringLiteral("can0"), &errorString);
     if (!m_can1) {
         // Error handling goes here
         qDebug() << "Creating Device Error: " << errorString;
@@ -60,7 +60,10 @@ void RacepakCanControl::readFrame()
 
     switch (frame.frameId()) {
     case 0x190:
-        decodeSwitches(frame);
+        decodeInputs(frame);
+        break;
+    case 0x194:
+        decodeSwitchModule(frame);
         break;
     default:
         decodeOutput(frame);
@@ -69,12 +72,23 @@ void RacepakCanControl::readFrame()
 
 }
 
-void RacepakCanControl::decodeSwitches(QCanBusFrame &frame)
+void RacepakCanControl::decodeInputs(QCanBusFrame &frame)
 {
-    short data = frame.payload().at(2) & (frame.payload().at(3) << 8);
+    unsigned short data = frame.payload().at(2) & (frame.payload().at(3) << 8);
 
     for(int i = 0; i < 12; i++){
-        m_inputStatus[i] = data & 1;
+        m_inputStatus[i] = data & 0x01;
+        data = data >> 1;
+    }
+
+}
+
+void RacepakCanControl::decodeSwitchModule(QCanBusFrame &frame)
+{
+    unsigned short data = frame.payload().at(2) & (frame.payload().at(3) << 8);
+
+    for(int i = 0; i < 16; i++){
+        m_inputSwitchModule[i] = data & 0x01;
         data = data >> 1;
     }
 }

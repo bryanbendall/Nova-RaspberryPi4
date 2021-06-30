@@ -3,11 +3,9 @@ import GlobalVariables 1.0
 import GlobalColors 1.0
 
 Text {
-    id: mphText
-    property real speed: GlobalVariables.speed
     color: GlobalColors.white
     font.pointSize: 80
-    text: Math.floor(speed * 1.609344)
+    text: GlobalVariables.useKph ? Math.floor(GlobalVariables.speed * 1.609344) : GlobalVariables.speed
 
     Text {
         anchors.top: parent.bottom
@@ -15,7 +13,7 @@ Text {
         anchors.horizontalCenter: parent.horizontalCenter
         color: GlobalColors.gray
         font.pointSize: 20
-        text: "Kph"
+        text: GlobalVariables.useKph ? "Kph" : "Mph"
     }
 
 }

@@ -7,15 +7,16 @@ Item {
     property real guageSize: 130
 
     Column{
-        anchors.right: parent.right
-        anchors.rightMargin: 40
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 130
+        //anchors.right: parent.right
+        //anchors.rightMargin: 40
+        //anchors.bottom: parent.bottom
+        //anchors.bottomMargin: 130
+        anchors.centerIn: parent
         spacing: 30
 
         Row{
             spacing: 30
-            Guage2{
+            CircularGauge{
                 width: root.guageSize
                 height: root.guageSize
                 minValue: 6
@@ -27,7 +28,7 @@ Item {
                 units: "V"
                 image: "../../Images/battery.svg"
             }
-            Guage2{
+            CircularGauge{
                 width: root.guageSize
                 height: root.guageSize
                 minValue: 50
@@ -41,7 +42,7 @@ Item {
 
         Row{
             spacing: 30
-            Guage2{
+            CircularGauge{
                 width: root.guageSize
                 height: root.guageSize
                 minValue: 0
@@ -51,7 +52,7 @@ Item {
                 units: "Gas Psi"
                 image: "../../Images/gasicon.svg"
             }
-            Guage2{
+            CircularGauge{
                 width: root.guageSize
                 height: root.guageSize
                 minValue: 0
@@ -63,10 +64,6 @@ Item {
                 image: "../../Images/gasicon.svg"
             }
         }
-
-
-
-
 
     }
 

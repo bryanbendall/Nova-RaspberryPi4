@@ -23,9 +23,9 @@
     Q_PROPERTY(float TPS_RoC                READ TPS_RoC            NOTIFY onHolleyDataChanged) const float& TPS_RoC()              {unsigned int i = 19; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Tuning_Change          READ Tuning_Change      NOTIFY onHolleyDataChanged) const float& Tuning_Change()        {unsigned int i = 20; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Estimated_VE           READ Estimated_VE       NOTIFY onHolleyDataChanged) const float& Estimated_VE()         {unsigned int i = 21; registerFilter(i); return m_data[i];}
-    Q_PROPERTY(float Fuel_Table_1           READ Fuel_Table_1       NOTIFY onHolleyDataChanged) const float& Fuel_Table_1()         {unsigned int i = 22; registerFilter(i); return m_data[i];}
-    Q_PROPERTY(float Fuel_Table_2           READ Fuel_Table_2       NOTIFY onHolleyDataChanged) const float& Fuel_Table_2()         {unsigned int i = 23; registerFilter(i); return m_data[i];}
-    Q_PROPERTY(float Fuel_Table_3           READ Fuel_Table_3       NOTIFY onHolleyDataChanged) const float& Fuel_Table_3()         {unsigned int i = 24; registerFilter(i); return m_data[i];}
+    //Q_PROPERTY(float Fuel_Table_1           READ Fuel_Table_1       NOTIFY onHolleyDataChanged) const float& Fuel_Table_1()         {unsigned int i = 22; registerFilter(i); return m_data[i];}
+    //Q_PROPERTY(float Fuel_Table_2           READ Fuel_Table_2       NOTIFY onHolleyDataChanged) const float& Fuel_Table_2()         {unsigned int i = 23; registerFilter(i); return m_data[i];}
+    //Q_PROPERTY(float Fuel_Table_3           READ Fuel_Table_3       NOTIFY onHolleyDataChanged) const float& Fuel_Table_3()         {unsigned int i = 24; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Ignition_Timing        READ Ignition_Timing    NOTIFY onHolleyDataChanged) const float& Ignition_Timing()      {unsigned int i = 25; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Knock_Retard           READ Knock_Retard       NOTIFY onHolleyDataChanged) const float& Knock_Retard()         {unsigned int i = 26; registerFilter(i); return m_data[i];}
     Q_PROPERTY(float Knock_Level            READ Knock_Level        NOTIFY onHolleyDataChanged) const float& Knock_Level()          {unsigned int i = 27; registerFilter(i); return m_data[i];}

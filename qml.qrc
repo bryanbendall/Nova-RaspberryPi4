@@ -25,7 +25,6 @@
         <file>qml/Components/ColorVectorImage.qml</file>
         <file>qml/Components/FuelGauges.qml</file>
         <file>qml/Components/GearIndicator.qml</file>
-        <file>qml/Components/Guage2.qml</file>
         <file>qml/Components/IndicatorButton.qml</file>
         <file>qml/Components/OdometerIndicator.qml</file>
         <file>qml/Components/SpeedIndicator.qml</file>
@@ -37,5 +36,12 @@
         <file>qml/Screens/CenterScreen.qml</file>
         <file>qml/Screens/ComputerWrapper.qml</file>
         <file>qml/Screens/GuagesScreen.qml</file>
+        <file>qml/Panels/TachPanel.qml</file>
+        <file>qml/Panels/FuelPanel.qml</file>
+        <file>qml/Components/CircularGauge.qml</file>
+        <file>qml/Panels/LeftPanel.qml</file>
+        <file>qml/Panels/IndicatorPanel.qml</file>
+        <file>qml/Panels/RightPanel.qml</file>
+        <file>qml/Panels/RacepakInputsPanel.qml</file>
     </qresource>
 </RCC>
