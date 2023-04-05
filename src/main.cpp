@@ -61,6 +61,11 @@ int main(int argc, char *argv[])
 //    qputenv("QT_LOGGING_RULES", "qt.qpa.*=true");
 //    qputenv("QSG_INFO", "1");
 
+      // Test touch screen
+//      qputenv("QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS", "rotate=90");
+//      qputenv("QT_LOGGING_RULES", "qt.qpa.input=true");
+      //////////////////////
+
 
     //BluetoothWatcher watcher;
     HolleyCanControl holleyCan;
@@ -77,7 +82,7 @@ int main(int argc, char *argv[])
 
     setupFont();
     hideCursor(app);
-    setupHttpServer(app);
+//    setupHttpServer(app);
 
 // This is for pc testing only
 #if !defined(CAMARO) && !defined(NOVA)

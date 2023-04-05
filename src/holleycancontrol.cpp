@@ -2,6 +2,8 @@
 
 #include <QDebug>
 #include <QTime>
+#include <QDataStream>
+#include <QtEndian>
 
 HolleyCanControl::HolleyCanControl(QObject *parent)
     : QObject(parent)
@@ -40,7 +42,6 @@ void HolleyCanControl::connectToCan()
 
         connect(m_can, &QCanBusDevice::errorOccurred, [=](){qDebug() << "QCanBusDevice::errorOccurred - " << m_can->errorString();});
         connect(m_can, &QCanBusDevice::stateChanged, [=](){qDebug() << "QCanBusDevice::stateChanged - " << m_can->state();});
-        connect(m_can, &QCanBusDevice::framesReceived, this, &HolleyCanControl::readFrame);
 
         connectionStatus = m_can->connectDevice();
     }
@@ -54,53 +55,8 @@ void HolleyCanControl::connectToCan()
     qDebug() << "can1 connect successful";
 
     m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &HolleyCanControl::onHolleyDataChanged);
-    m_timer->start(20);
-
-}
-
-void HolleyCanControl::readFrame()
-{
-    for(int i = 0; i < m_can->framesAvailable(); i++){
-        //qDebug() << "Frames available: " << m_can0->framesAvailable();
-        QCanBusFrame frame = m_can->readFrame();
-        //qDebug() << "Recieved Frame: " << frame.frameId();
-
-
-        /////////////////////////////////////////////////////////////////////
-        // Bail if its not from the ecu
-
-        unsigned char sourceId = (frame.frameId() >> 11) & 0x07;
-
-        if(sourceId != 0x02){
-            //qDebug() << "Bailing because not ecu";
-            return;
-        }
-        /////////////////////////////////////////////////////////////////////
-
-        unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
-        m_data[index] = getFloat(frame);
-
-        if(index == 220){
-            // Odometer calculation
-            static double speed1 = 0.0;
-            static double speed2 = 0.0;
-            static QTime time;
-            static bool setupDone = false;
-            if(!setupDone){
-                time.start();
-                setupDone = true;
-            }
-
-            double elapsedHours = (double)time.restart() * 2.7777777777778E-7;
-            m_odometer += ((speed1 + speed2) / 2.0) * elapsedHours;
-
-            speed2 = speed1;
-            speed1 = (double)getFloat(frame);
-
-        }
-
-    }
+    connect(m_timer, &QTimer::timeout, this, &HolleyCanControl::parseMap);
+    m_timer->start(1000);
 
 }
 
@@ -124,13 +80,11 @@ void HolleyCanControl::setupFilters()
 
 float HolleyCanControl::getFloat(QCanBusFrame &frame)
 {
-    unsigned long temp = ((unsigned long)frame.payload().at(0) << 24) |
-            ((unsigned long)frame.payload().at(1) << 16) |
-            ((unsigned long)frame.payload().at(2) << 8) |
-            (unsigned long)frame.payload().at(3);
-
-    float f = *((float*)&temp);
-    return f;
+#if defined(CAMARO) || defined(NOVA)
+    return qFromBigEndian<float>(frame.payload().data());
+#else
+    return 0.0f;
+#endif
 }
 
 void HolleyCanControl::registerFilter(unsigned int filter)
@@ -142,3 +96,49 @@ void HolleyCanControl::registerFilter(unsigned int filter)
     m_filterId.push_back(filter);
 }
 
+void HolleyCanControl::parseMap()
+{
+    for(int i = 0; i < m_can->framesAvailable(); i++){
+        QCanBusFrame frame = m_can->readFrame();
+        m_rawData[frame.frameId()] = frame;
+    }
+
+    qDebug() << "parsing raw frame - " << m_rawData.size();
+    for(auto frame : m_rawData){
+        /////////////////////////////////////////////////////////////////////
+        // Bail if its not from the ecu
+
+        quint32 sourceId = (frame.frameId() >> 11) & 0x07;
+
+        if(sourceId != 0x02){
+//            qDebug() << "Bailing because not ecu - " << sourceId;
+            continue;
+        }
+        /////////////////////////////////////////////////////////////////////
+        unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
+        m_data[index] = getFloat(frame);
+
+#ifdef NOVA
+        if(index == 220){
+            // Odometer calculation
+            static double speed1 = 0.0;
+            static double speed2 = 0.0;
+            static QTime time;
+            static bool setupDone = false;
+            if(!setupDone){
+                time.start();
+                setupDone = true;
+            }
+
+            double elapsedHours = (double)time.restart() * 2.7777777777778E-7;
+            m_odometer += ((speed1 + speed2) / 2.0) * elapsedHours;
+
+            speed2 = speed1;
+            speed1 = (double)getFloat(frame);
+
+        }
+#endif
+    }
+
+    emit onHolleyDataChanged();
+}

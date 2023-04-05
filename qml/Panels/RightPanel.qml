@@ -8,12 +8,14 @@ SwipeView {
     id: swipeView
     width: 350
     height: 380
-    currentIndex: 1
+    currentIndex: 0
     clip: true
 
     InfoPanel{}
 
     RacepakInputsPanel{ id: racepakInputsPanel }
+
+    EgtPanel{ id: egtPanel }
 
     Component.onCompleted: {
         if(typeof racepakCan === 'undefined'){

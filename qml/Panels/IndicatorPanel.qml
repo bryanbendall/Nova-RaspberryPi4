@@ -24,9 +24,9 @@ Item {
         ColorVectorImage{
             width: 50
             height: 50
-            imageSource: "../../Images/high-beam.svg"
-            color: GlobalColors.blue
-            visible: GlobalVariables.highbeamIndicatorState
+            imageSource: GlobalVariables.highbeamIndicatorState ? "../../Images/high-beam.svg" : "../../Images/low-beam.svg"
+            color: GlobalVariables.highbeamIndicatorState ? GlobalColors.blue : GlobalVariables.lowBeamLightState ? GlobalColors.green : GlobalColors.orange
+            visible: GlobalVariables.highbeamIndicatorState || GlobalVariables.lowBeamLightState || GlobalVariables.parkingLightState
         }
     }
 

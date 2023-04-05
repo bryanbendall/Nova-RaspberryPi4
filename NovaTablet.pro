@@ -10,10 +10,10 @@ include(QtWebApp/QtWebApp/httpserver/httpserver.pri)
 DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG(Nova):DEFINES += NOVA \
-                        HOLLEYV4
+                        HOLLEYV6
 CONFIG(Camaro):DEFINES += CAMARO \
-                          HOLLEYV4
-CONFIG(Pc):DEFINES += HOLLEYV4
+                          HOLLEYV6
+CONFIG(Pc):DEFINES += HOLLEYV6
 
 #QMAKE_POST_LINK += sudo setpcap CAP_NET_ADMIN=eip NovaTablet
 
@@ -34,7 +34,8 @@ SOURCES += \
     src/bluetoothwatcher.cpp \
     src/racepakcancontrol.cpp \
     src/novacancontrol.cpp \
-    src/wificontroller.cpp
+    src/wificontroller.cpp \
+    src/bryteccan.cpp
 
 RESOURCES += qml.qrc \
     res.qrc
@@ -62,7 +63,8 @@ HEADERS += \
     src/novacancontrol.h \
     src/holleyvariablesv6.h \
     src/holleyvariablesv4.h \
-    src/wificontroller.h
+    src/wificontroller.h \
+    src/bryteccan.h
 
 INCLUDEPATH += \
     ../../Downloads/wiringPi-8d188fa/wiringPi/ \

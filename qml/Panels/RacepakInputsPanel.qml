@@ -47,27 +47,26 @@ Item {
             Loader{ sourceComponent: labelText; property string label: "Switch Module 14" }
             Loader{ sourceComponent: labelText; property string label: "Switch Module 15" }
             Loader{ sourceComponent: labelText; property string label: "Switch Module 16" }
-
         }
 
         Column{
             width: root.width/2 - 5
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_1_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_2_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_3_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_4_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_5_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_6_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_7_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_8_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_9_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_10_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_11_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_12_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_13_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_14_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_15_Status }
-            Loader{ sourceComponent: valueText; property var channel: racepakCan.Module_Input_16_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_1_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_2_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_3_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_4_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_5_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_6_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_7_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_8_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_9_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_10_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_11_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_12_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_13_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_14_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_15_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_16_Status }
         }
 
     }

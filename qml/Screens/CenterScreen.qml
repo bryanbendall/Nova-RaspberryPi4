@@ -16,33 +16,34 @@ Item {
         height: parent.width
         color: "black"
 
-        Map {
-            id: map
-            anchors.top: parent.top
-            anchors.left: parent.left
-            width: parent.width
-            height: parent.height / 2
-            plugin: mapboxglPlugin
-            center: QtPositioning.coordinate(42.3526257,-83.2392886) // Detroit
-            zoomLevel: 8
-            copyrightsVisible: false
-            tilt: 45
-        }
+//        Map {
+//            id: map
+//            anchors.top: parent.top
+//            anchors.left: parent.left
+//            width: parent.width
+//            height: parent.height / 2
+//            plugin: mapboxglPlugin
+//            center: QtPositioning.coordinate(42.3526257,-83.2392886) // Detroit
+//            zoomLevel: 8
+//            copyrightsVisible: false
+//            tilt: 45
+//        }
 
-        Plugin {
-            id: mapboxglPlugin
-            name: "mapboxgl"
-//            PluginParameter { name: "mapboxgl.mapping.additional_style_urls";
-//                              value: "http://localhost:7000/dark-matter.style" }
+//        Plugin {
+//            id: mapboxglPlugin
+//            name: "mapboxgl"
+////            PluginParameter { name: "mapboxgl.mapping.additional_style_urls";
+////                              value: "http://localhost:7000/dark-matter.style" }
 
-            PluginParameter { name: "mapboxgl.mapping.cache.memory";
-                              value: "true" }
+//            PluginParameter { name: "mapboxgl.mapping.cache.memory";
+//                              value: "true" }
 
-        }
+//        }
 
         Text{
+            id: odo
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: map.bottom
+            anchors.top: parent.top
             anchors.topMargin: 50
             font.pointSize: 20
             color: "white"
@@ -52,6 +53,7 @@ Item {
         Button{
             text: "Push"
             font.pointSize: 50
+            anchors.top: odo.bottom
             onClicked: console.log("button pushed!!!!")
         }
 

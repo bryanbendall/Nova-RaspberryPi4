@@ -29,10 +29,22 @@ QtObject{
     property bool fanState: (holleyCan.Fan_1 > 0.0)
     property bool leftTurnState: novaCan.LeftTurn
     property bool rightTurnState: novaCan.RightTurn
+    property bool parkingLightState: novaCan.ParkingLights
+    property bool lowBeamLightState: novaCan.LowBeam
     property bool highbeamIndicatorState: novaCan.HighBeam
     property bool reverse: novaCan.ReverseLights
     property bool showGear: true
     property bool parkingBrakeState: false
+
+    // Not Used
+    property real egt1: 1385.0
+    property real egt2: 1385.0
+    property real egt3: 1385.0
+    property real egt4: 1385.0
+    property real egt5: 1385.0
+    property real egt6: 1111.0
+    property real egt7: 200.0
+    property real egt8: 1500.0
 
 }
 

@@ -43,5 +43,6 @@
         <file>qml/Panels/IndicatorPanel.qml</file>
         <file>qml/Panels/RightPanel.qml</file>
         <file>qml/Panels/RacepakInputsPanel.qml</file>
+        <file>qml/Panels/EgtPanel.qml</file>
     </qresource>
 </RCC>

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QCanBus>
 #include <QTimer>
+#include <QMap>
 
 class RacepakCanControl : public QObject
 {
@@ -11,6 +12,7 @@ class RacepakCanControl : public QObject
 
     QCanBusDevice* m_can1;
     QTimer* m_timer;
+    QMap<quint32, QCanBusFrame> m_rawData;
 
     float m_outputAmps[30] = {0.0f};
     float m_outputVolts[30] = {0.0f};

@@ -6,6 +6,8 @@
 #include <QVector>
 #include <QtDebug>
 #include <QTimer>
+#include <QThread>
+#include <QMap>
 
 class HolleyCanControl : public QObject
 {
@@ -16,6 +18,7 @@ class HolleyCanControl : public QObject
     bool m_setupDone = false;
     float m_data[511] = {0.0f};
     QVector<unsigned int> m_filterId;
+    QMap<quint32, QCanBusFrame> m_rawData;
 
 public:
     explicit HolleyCanControl(QObject *parent = nullptr);
@@ -26,12 +29,13 @@ signals:
 
 public slots:
     void connectToCan();
-    void readFrame();
 
 private:
     void setupFilters();
     float getFloat(QCanBusFrame& frame);
     void registerFilter(unsigned int filter);
+
+    void parseMap();
 
     double m_odometer = 0.0;
     Q_PROPERTY(double Odometer MEMBER m_odometer NOTIFY onHolleyDataChanged)

@@ -4,25 +4,7 @@
 #include <QObject>
 #include <QCanBus>
 #include <QTimer>
-
-//Module IDs
-#define ID_ALL_MODULES				0x0000
-#define ID_FRONT_LIGHT_MODULE		0x00FE
-#define ID_FUEL_PUMP_MODULE			0x00FD
-#define ID_REAR_MODULE				0x00FC
-#define ID_INTERIOR_MODULE			0x00FB
-#define ID_INPUT_MODULE				0x00FA
-#define ID_LOCK_MODULE				0x00F9
-#define ID_FRONT_MODULE_1			0x00F8
-//Power module pin addresses
-#define PM_PIN_1_ADDR				0x01
-#define PM_PIN_2_ADDR				0x02
-#define PM_PIN_3_ADDR				0x03
-#define PM_PIN_4_ADDR				0x04
-#define PM_PIN_10_ADDR				0x05
-#define PM_PIN_11_ADDR				0x06
-#define PM_PIN_12_ADDR				0x07
-#define PM_PIN_13_ADDR				0x08
+#include <QMap>
 
 class NovaCanControl : public QObject
 {
@@ -30,6 +12,7 @@ class NovaCanControl : public QObject
 
     QCanBusDevice* m_can1;
     QTimer* m_timer;
+    QMap<quint32, QCanBusFrame> m_rawData;
 
     bool m_ignition = false;
     //bool m_eBrake = false;
@@ -69,8 +52,6 @@ signals:
 public slots:
     void connectToCan();
     void readFrame();
-
-    void sendUnlock();
 
 };
 
