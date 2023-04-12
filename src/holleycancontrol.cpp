@@ -67,7 +67,6 @@ void HolleyCanControl::parseMap()
         m_rawData[frame.frameId()] = frame;
     }
 
-//    qDebug() << "parsing raw frame - " << m_rawData.size();
     for(auto frame : m_rawData){
         /////////////////////////////////////////////////////////////////////
         // Bail if its not from the ecu
@@ -82,7 +81,6 @@ void HolleyCanControl::parseMap()
         unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
         float value = getFloat(frame);
         m_data[index] = value;
-//        qDebug() << "update index - " << index << " - " << value;
 
 #ifdef NOVA
         if(index == 220){
@@ -129,14 +127,6 @@ void HolleyCanControl::setupFilters()
 
 float HolleyCanControl::getFloat(QCanBusFrame &frame)
 {
-//    unsigned long temp = ((unsigned long)frame.payload().at(0) << 24) |
-//            ((unsigned long)frame.payload().at(1) << 16) |
-//            ((unsigned long)frame.payload().at(2) << 8) |
-//            (unsigned long)frame.payload().at(3);
-
-//    float f = *((float*)&temp);
-//    return f;
-
 #if defined(CAMARO) || defined(NOVA)
     return qFromBigEndian<float>(frame.payload().data());
 #else
@@ -146,7 +136,6 @@ float HolleyCanControl::getFloat(QCanBusFrame &frame)
 
 void HolleyCanControl::registerFilter(unsigned int filter)
 {
-    qDebug() << "set filter - " << filter;
     if(m_setupDone)
         return;
     if(m_filterId.contains(filter))
