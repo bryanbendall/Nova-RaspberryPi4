@@ -60,42 +60,6 @@ void HolleyCanControl::connectToCan()
 
 }
 
-void HolleyCanControl::setupFilters()
-{
-    QCanBusDevice::Filter filter;
-    QList<QCanBusDevice::Filter> filterList;
-
-    filter.frameIdMask = 0x1FFC000;
-    filter.format = QCanBusDevice::Filter::MatchExtendedFormat;
-    filter.type = QCanBusFrame::DataFrame;
-
-    for(auto f : m_filterId){
-        filter.frameId = ((unsigned long)f << 14);
-        filterList.append(filter);
-    }
-
-    // apply filter
-    m_can->setConfigurationParameter(QCanBusDevice::RawFilterKey, QVariant::fromValue(filterList));
-}
-
-float HolleyCanControl::getFloat(QCanBusFrame &frame)
-{
-#if defined(CAMARO) || defined(NOVA)
-    return qFromBigEndian<float>(frame.payload().data());
-#else
-    return 0.0f;
-#endif
-}
-
-void HolleyCanControl::registerFilter(unsigned int filter)
-{
-    if(m_setupDone)
-        return;
-    if(m_filterId.contains(filter))
-        return;
-    m_filterId.push_back(filter);
-}
-
 void HolleyCanControl::parseMap()
 {
     for(int i = 0; i < m_can->framesAvailable(); i++){
@@ -103,7 +67,7 @@ void HolleyCanControl::parseMap()
         m_rawData[frame.frameId()] = frame;
     }
 
-    qDebug() << "parsing raw frame - " << m_rawData.size();
+//    qDebug() << "parsing raw frame - " << m_rawData.size();
     for(auto frame : m_rawData){
         /////////////////////////////////////////////////////////////////////
         // Bail if its not from the ecu
@@ -116,7 +80,9 @@ void HolleyCanControl::parseMap()
         }
         /////////////////////////////////////////////////////////////////////
         unsigned int index = (frame.frameId() & 0x1FFC000) >> 14;
-        m_data[index] = getFloat(frame);
+        float value = getFloat(frame);
+        m_data[index] = value;
+//        qDebug() << "update index - " << index << " - " << value;
 
 #ifdef NOVA
         if(index == 220){
@@ -142,3 +108,50 @@ void HolleyCanControl::parseMap()
 
     emit onHolleyDataChanged();
 }
+
+void HolleyCanControl::setupFilters()
+{
+    QCanBusDevice::Filter filter;
+    QList<QCanBusDevice::Filter> filterList;
+
+    filter.frameIdMask = 0x1FFC000;
+    filter.format = QCanBusDevice::Filter::MatchExtendedFormat;
+    filter.type = QCanBusFrame::DataFrame;
+
+    for(auto f : m_filterId){
+        filter.frameId = ((unsigned long)f << 14);
+        filterList.append(filter);
+    }
+
+    // apply filter
+    m_can->setConfigurationParameter(QCanBusDevice::RawFilterKey, QVariant::fromValue(filterList));
+}
+
+float HolleyCanControl::getFloat(QCanBusFrame &frame)
+{
+//    unsigned long temp = ((unsigned long)frame.payload().at(0) << 24) |
+//            ((unsigned long)frame.payload().at(1) << 16) |
+//            ((unsigned long)frame.payload().at(2) << 8) |
+//            (unsigned long)frame.payload().at(3);
+
+//    float f = *((float*)&temp);
+//    return f;
+
+#if defined(CAMARO) || defined(NOVA)
+    return qFromBigEndian<float>(frame.payload().data());
+#else
+    return 0.0f;
+#endif
+}
+
+void HolleyCanControl::registerFilter(unsigned int filter)
+{
+    qDebug() << "set filter - " << filter;
+    if(m_setupDone)
+        return;
+    if(m_filterId.contains(filter))
+        return;
+    m_filterId.push_back(filter);
+
+}
+

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.7.1, 2023-04-05T18:49:37. -->
+<!-- Written by QtCreator 4.7.1, 2023-04-12T18:10:30. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -8,7 +8,7 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
-  <value type="int">2</value>
+  <value type="int">1</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
@@ -554,10 +554,10 @@
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
        <value type="QString">192.168.2.30</value>
-       <value type="QString">192.168.2.53</value>
-       <value type="QString">192.168.166.243</value>
        <value type="QString">192.168.4.1</value>
        <value type="QString">192.168.2.30</value>
+       <value type="QString">192.168.2.53</value>
+       <value type="QString">192.168.166.243</value>
        <value type="QString">192.168.10.201</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
@@ -578,10 +578,10 @@
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
        <value type="QDateTime">2020-01-03T22:06:07.916</value>
-       <value type="QDateTime">2021-03-18T21:54:10.669</value>
-       <value type="QDateTime">2021-05-08T12:49:52.369</value>
        <value type="QDateTime">2023-04-02T14:21:35.003</value>
        <value type="QDateTime">2020-02-17T15:32:45.059</value>
+       <value type="QDateTime">2021-03-18T21:54:10.669</value>
+       <value type="QDateTime">2021-05-08T12:49:52.369</value>
        <value type="QDateTime">2020-09-05T14:06:17.685</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
@@ -885,13 +885,16 @@
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
-       <value type="QString">192.168.137.223</value>
        <value type="QString">192.168.220.189</value>
+       <value type="QString">192.168.137.223</value>
        <value type="QString">192.168.137.142</value>
+       <value type="QString">192.168.137.160</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
+       <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
@@ -900,11 +903,13 @@
        <value type="QString"></value>
        <value type="QString"></value>
        <value type="QString"></value>
+       <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2021-07-19T17:35:23.007</value>
        <value type="QDateTime">2023-04-05T18:37:02.047</value>
+       <value type="QDateTime">2021-07-19T17:35:23.007</value>
        <value type="QDateTime">2021-07-24T12:45:45.516</value>
+       <value type="QDateTime">2023-04-05T19:41:08.604</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>

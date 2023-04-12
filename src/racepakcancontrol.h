@@ -138,22 +138,22 @@ private:
     Q_PROPERTY(bool Input_10_Status             READ Input_10_Status 	NOTIFY onRacepakDataChanged) const bool& Input_10_Status()              {return m_inputStatus[9];}
     Q_PROPERTY(bool Input_11_Status             READ Input_11_Status 	NOTIFY onRacepakDataChanged) const bool& Input_11_Status()              {return m_inputStatus[10];}
     Q_PROPERTY(bool Input_12_Status             READ Input_12_Status 	NOTIFY onRacepakDataChanged) const bool& Input_12_Status()              {return m_inputStatus[11];}
-    Q_PROPERTY(bool Module_Input_1_Status 		READ Module_Input_1_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_1_Status() 		{return m_inputStatus[0];}
-    Q_PROPERTY(bool Module_Input_2_Status 		READ Module_Input_2_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_2_Status() 		{return m_inputStatus[1];}
-    Q_PROPERTY(bool Module_Input_3_Status 		READ Module_Input_3_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_3_Status() 		{return m_inputStatus[2];}
-    Q_PROPERTY(bool Module_Input_4_Status 		READ Module_Input_4_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_4_Status() 		{return m_inputStatus[3];}
-    Q_PROPERTY(bool Module_Input_5_Status 		READ Module_Input_5_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_5_Status() 		{return m_inputStatus[4];}
-    Q_PROPERTY(bool Module_Input_6_Status 		READ Module_Input_6_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_6_Status() 		{return m_inputStatus[5];}
-    Q_PROPERTY(bool Module_Input_7_Status 		READ Module_Input_7_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_7_Status() 		{return m_inputStatus[6];}
-    Q_PROPERTY(bool Module_Input_8_Status 		READ Module_Input_8_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_8_Status() 		{return m_inputStatus[7];}
-    Q_PROPERTY(bool Module_Input_9_Status 		READ Module_Input_9_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_9_Status() 		{return m_inputStatus[8];}
-    Q_PROPERTY(bool Module_Input_10_Status      READ Module_Input_10_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_10_Status() 		{return m_inputStatus[9];}
-    Q_PROPERTY(bool Module_Input_11_Status      READ Module_Input_11_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_11_Status() 		{return m_inputStatus[10];}
-    Q_PROPERTY(bool Module_Input_12_Status      READ Module_Input_12_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_12_Status() 		{return m_inputStatus[11];}
-    Q_PROPERTY(bool Module_Input_13_Status 		READ Module_Input_13_Status     NOTIFY onRacepakDataChanged) const bool& Module_Input_13_Status() 		{return m_inputStatus[12];}
-    Q_PROPERTY(bool Module_Input_14_Status      READ Module_Input_14_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_14_Status() 		{return m_inputStatus[13];}
-    Q_PROPERTY(bool Module_Input_15_Status      READ Module_Input_15_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_15_Status() 		{return m_inputStatus[14];}
-    Q_PROPERTY(bool Module_Input_16_Status      READ Module_Input_16_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_16_Status() 		{return m_inputStatus[15];}
+    Q_PROPERTY(bool Module_Input_1_Status 		READ Module_Input_1_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_1_Status() 		{return m_inputSwitchModule[0];}
+    Q_PROPERTY(bool Module_Input_2_Status 		READ Module_Input_2_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_2_Status() 		{return m_inputSwitchModule[1];}
+    Q_PROPERTY(bool Module_Input_3_Status 		READ Module_Input_3_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_3_Status() 		{return m_inputSwitchModule[2];}
+    Q_PROPERTY(bool Module_Input_4_Status 		READ Module_Input_4_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_4_Status() 		{return m_inputSwitchModule[3];}
+    Q_PROPERTY(bool Module_Input_5_Status 		READ Module_Input_5_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_5_Status() 		{return m_inputSwitchModule[4];}
+    Q_PROPERTY(bool Module_Input_6_Status 		READ Module_Input_6_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_6_Status() 		{return m_inputSwitchModule[5];}
+    Q_PROPERTY(bool Module_Input_7_Status 		READ Module_Input_7_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_7_Status() 		{return m_inputSwitchModule[6];}
+    Q_PROPERTY(bool Module_Input_8_Status 		READ Module_Input_8_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_8_Status() 		{return m_inputSwitchModule[7];}
+    Q_PROPERTY(bool Module_Input_9_Status 		READ Module_Input_9_Status      NOTIFY onRacepakDataChanged) const bool& Module_Input_9_Status() 		{return m_inputSwitchModule[8];}
+    Q_PROPERTY(bool Module_Input_10_Status      READ Module_Input_10_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_10_Status() 		{return m_inputSwitchModule[9];}
+    Q_PROPERTY(bool Module_Input_11_Status      READ Module_Input_11_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_11_Status() 		{return m_inputSwitchModule[10];}
+    Q_PROPERTY(bool Module_Input_12_Status      READ Module_Input_12_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_12_Status() 		{return m_inputSwitchModule[11];}
+    Q_PROPERTY(bool Module_Input_13_Status 		READ Module_Input_13_Status     NOTIFY onRacepakDataChanged) const bool& Module_Input_13_Status() 		{return m_inputSwitchModule[12];}
+    Q_PROPERTY(bool Module_Input_14_Status      READ Module_Input_14_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_14_Status() 		{return m_inputSwitchModule[13];}
+    Q_PROPERTY(bool Module_Input_15_Status      READ Module_Input_15_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_15_Status() 		{return m_inputSwitchModule[14];}
+    Q_PROPERTY(bool Module_Input_16_Status      READ Module_Input_16_Status 	NOTIFY onRacepakDataChanged) const bool& Module_Input_16_Status() 		{return m_inputSwitchModule[15];}
 
 
 };
