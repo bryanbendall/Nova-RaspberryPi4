@@ -28,8 +28,8 @@ QtObject{
     property bool overDrive: racepakCan.Output_13_Volts > 6.0
     property bool parkNeutral: false
     property bool fanState: false //racepakCan.Output_30_Volts > 6.0
-    property bool leftTurnState: racepakCan.Module_Input_2_Status //racepakCan.Output_17_Volts > 6.0
-    property bool rightTurnState: racepakCan.Module_Input_1_Status //racepakCan.Output_12_Volts > 6.0
+    property bool leftTurnState: racepakCan.Module_Input_1_Status //racepakCan.Output_17_Volts > 6.0
+    property bool rightTurnState: racepakCan.Module_Input_2_Status //racepakCan.Output_12_Volts > 6.0
     property bool parkingLightState: false
     property bool lowBeamLightState: racepakCan.Module_Input_4_Status //false
     property bool highbeamIndicatorState: racepakCan.Module_Input_5_Status //racepakCan.Output_8_Volts > 6.0
