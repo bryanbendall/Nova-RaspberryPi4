@@ -140,6 +140,14 @@ void NovaCanControl::readFrame()
         case BT_WaterInjPumpTrig:
             m_methPump = toBool(bc.value);
             break;
+
+            // Testing inputs
+        case BT_StartButton:
+            m_startButton = bc.value;
+            break;
+        case BT_NeutralSafety:
+            m_neutralSafety = bc.value;
+            break;
         }
     }
 

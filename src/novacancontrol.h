@@ -42,6 +42,12 @@ class NovaCanControl : public QObject
     Q_PROPERTY(bool GasPump         MEMBER m_gasPump          NOTIFY onNovaDataChanged)
     Q_PROPERTY(bool MethPump        MEMBER m_methPump         NOTIFY onNovaDataChanged)
 
+    // Testing inputs
+    float m_startButton = 0.0f;
+    float m_neutralSafety = 0.0f;
+    Q_PROPERTY(float StartButton    MEMBER m_startButton      NOTIFY onNovaDataChanged)
+    Q_PROPERTY(float NeutralSafety  MEMBER m_neutralSafety    NOTIFY onNovaDataChanged)
+
 public:
     explicit NovaCanControl(QObject *parent = nullptr);
     ~NovaCanControl();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.7.1, 2023-04-16T09:36:45. -->
+<!-- Written by QtCreator 4.7.1, 2023-04-30T11:19:21. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -62,14 +62,14 @@
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Camaro Rasp 4</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Camaro Rasp 4</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{a2ae6040-08c8-4781-9053-9980135091f4}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Nova Rasp 4</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Nova Rasp 4</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{18260ff0-32cf-4a32-a249-cbbd473b9af1}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -77,7 +77,7 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">true</value>
-      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Camaro</value>
+      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Nova</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>
@@ -129,7 +129,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -137,7 +137,7 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">false</value>
-      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Camaro</value>
+      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Nova</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>
@@ -189,7 +189,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -281,18 +281,24 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.DirectUploadStep</value>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles">
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
-       <value type="QString">192.168.137.142</value>
-       <value type="QString">192.168.137.223</value>
-       <value type="QString">192.168.137.160</value>
-       <value type="QString">192.168.220.189</value>
+       <value type="QString">192.168.10.201</value>
+       <value type="QString">192.168.2.53</value>
+       <value type="QString">192.168.166.243</value>
+       <value type="QString">192.168.2.30</value>
+       <value type="QString">192.168.2.30</value>
+       <value type="QString">192.168.4.1</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
+       <value type="QString">/home/pi</value>
+       <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
@@ -303,12 +309,16 @@
        <value type="QString"></value>
        <value type="QString"></value>
        <value type="QString"></value>
+       <value type="QString"></value>
+       <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2021-07-24T12:45:45.516</value>
-       <value type="QDateTime">2021-07-19T17:35:23.007</value>
-       <value type="QDateTime">2023-04-16T08:59:03.675</value>
-       <value type="QDateTime">2023-04-05T18:37:02.047</value>
+       <value type="QDateTime">2020-09-05T14:06:17.685</value>
+       <value type="QDateTime">2021-03-18T21:54:10.669</value>
+       <value type="QDateTime">2021-05-08T12:49:52.369</value>
+       <value type="QDateTime">2020-01-03T22:06:07.916</value>
+       <value type="QDateTime">2020-02-17T15:32:45.059</value>
+       <value type="QDateTime">2023-04-30T11:18:03.928</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>
@@ -365,7 +375,7 @@
      <value type="int">13</value>
      <value type="int">14</value>
     </valuelist>
-    <value type="int" key="PE.EnvironmentAspect.Base">1</value>
+    <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">NovaTablet</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
@@ -653,14 +663,14 @@
  <data>
   <variable>ProjectExplorer.Project.Target.2</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Nova Rasp 4</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Nova Rasp 4</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{18260ff0-32cf-4a32-a249-cbbd473b9af1}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Camaro Rasp 4</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Camaro Rasp 4</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{a2ae6040-08c8-4781-9053-9980135091f4}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -668,7 +678,7 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">true</value>
-      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Nova</value>
+      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Camaro</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>
@@ -720,7 +730,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -728,7 +738,7 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">false</value>
-      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Nova</value>
+      <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments">CONFIG+=Camaro</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>
@@ -780,7 +790,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -872,24 +882,18 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.DirectUploadStep</value>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles">
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
-       <value type="QString">192.168.10.201</value>
-       <value type="QString">192.168.2.53</value>
-       <value type="QString">192.168.2.30</value>
-       <value type="QString">192.168.166.243</value>
-       <value type="QString">192.168.4.1</value>
-       <value type="QString">192.168.2.30</value>
+       <value type="QString">192.168.137.223</value>
+       <value type="QString">192.168.220.189</value>
+       <value type="QString">192.168.137.160</value>
+       <value type="QString">192.168.137.142</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
-       <value type="QString">/home/pi</value>
-       <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi</value>
@@ -900,16 +904,12 @@
        <value type="QString"></value>
        <value type="QString"></value>
        <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2020-09-05T14:06:17.685</value>
-       <value type="QDateTime">2021-03-18T21:54:10.669</value>
-       <value type="QDateTime">2020-01-03T22:06:07.916</value>
-       <value type="QDateTime">2021-05-08T12:49:52.369</value>
-       <value type="QDateTime">2023-04-12T18:53:09.718</value>
-       <value type="QDateTime">2020-02-17T15:32:45.059</value>
+       <value type="QDateTime">2021-07-19T17:35:23.007</value>
+       <value type="QDateTime">2023-04-05T18:37:02.047</value>
+       <value type="QDateTime">2023-04-16T08:59:03.675</value>
+       <value type="QDateTime">2021-07-24T12:45:45.516</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>
@@ -966,7 +966,7 @@
      <value type="int">13</value>
      <value type="int">14</value>
     </valuelist>
-    <value type="int" key="PE.EnvironmentAspect.Base">0</value>
+    <value type="int" key="PE.EnvironmentAspect.Base">1</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">NovaTablet</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>

@@ -29,6 +29,8 @@ Item {
         anchors.centerIn: parent
         spacing: 10
 
+        // Switch Module ///////////////////////////////////////////
+        /*
         Column{
             width: firstColumnWidth - 5
             Loader{ sourceComponent: labelText; property string label: "Switch Module 1" }
@@ -68,6 +70,80 @@ Item {
             Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_15_Status }
             Loader{ sourceComponent: valueText; property bool channel: racepakCan.Module_Input_16_Status }
         }
+        */
+        // Switch Module ///////////////////////////////////////////
+
+        // Input Status ///////////////////////////////////////////
+//        /*
+        Column{
+            width: firstColumnWidth - 5
+            Loader{ sourceComponent: labelText; property string label: "Input Status 1" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 2" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 3" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 4" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 5" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 6" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 7" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 8" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 9" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 10" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 11" }
+            Loader{ sourceComponent: labelText; property string label: "Input Status 12" }
+        }
+
+        Column{
+            width: root.width/2 - 5
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_1_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_2_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_3_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_4_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_5_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_6_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_7_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_8_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_9_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_10_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_11_Status }
+            Loader{ sourceComponent: valueText; property bool channel: racepakCan.Input_12_Status }
+        }
+//        */
+        // Input Status ///////////////////////////////////////////
+
+        // Output Status ///////////////////////////////////////////
+        /*
+        Column{
+            width: firstColumnWidth - 5
+            Loader{ sourceComponent: labelText; property string label: "Output Status 1" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 2" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 3" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 4" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 5" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 6" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 7" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 8" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 9" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 10" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 11" }
+            Loader{ sourceComponent: labelText; property string label: "Output Status 12" }
+        }
+
+        Column{
+            width: root.width/2 - 5
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_1_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_2_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_3_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_4_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_5_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_6_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_7_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_8_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_9_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_10_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_11_Status }
+            Loader{ sourceComponent: valueText; property int channel: racepakCan.Output_12_Status }
+        }
+        */
+        // Output Status ///////////////////////////////////////////
 
     }
 
