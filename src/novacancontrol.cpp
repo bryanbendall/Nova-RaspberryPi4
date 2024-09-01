@@ -3,10 +3,14 @@
 #include <QDebug>
 #include "bryteccan.h"
 
+NovaCanControl* NovaCanControl::s_instance = nullptr;
+
 NovaCanControl::NovaCanControl(QObject *parent) : QObject(parent)
 {
+    s_instance = this;
 #ifdef NOVA
-    QMetaObject::invokeMethod(this, &NovaCanControl::connectToCan, Qt::QueuedConnection);
+//    QMetaObject::invokeMethod(this, &NovaCanControl::connectToCan, Qt::QueuedConnection);
+    QMetaObject::invokeMethod(this, &NovaCanControl::initBrytec, Qt::QueuedConnection);
 #endif
 }
 
@@ -54,48 +58,20 @@ void NovaCanControl::connectToCan()
     m_timer->start(100);
 }
 
-#define BT_StartButton 0
-#define BT_DriversDoor 1
-#define BT_Black9 2
-#define BT_DoorSpeed 3
-#define BT_PassDoor 4
-#define BT_PWindowDownButton 5
-#define BT_EngineRunning 6
-#define BT_RightTurnSwitch 7
-#define BT_BrakeSwitch 8
-#define BT_WaterInjPumpTrig 9
-#define BT_FuelPump1Trig 10
-#define BT_LeftTurnSwitch 11
-#define BT_CoolingFan 12
-#define BT_Blue19 13
-#define BT_NeutralSafety 14
-#define BT_Blue31 15
-#define BT_StartButtonLight 16
-#define BT_PassWindowDir 17
-#define BT_Black13 18
-#define BT_Black14 19
-#define BT_Black15 20
-#define BT_DriverWindowDir 21
-#define BT_DriverWindowCtrl 22
-#define BT_PassWindowCtrl 23
-#define BT_Blue13 24
-#define BT_PassWindowCS 25
-#define BT_DriverWindowCS 26
-#define BT_SteeringWheelSwitches 27
-#define BT_LightSwitchUp 28
-#define BT_IgnitionSwitch 29
-#define BT_LightSwitchDown 30
-#define BT_FanUp 31
-#define BT_ACOn 32
-#define BT_FanDown 33
-#define BT_PWindowUpButton 34
-#define BT_DWindowUpButton 35
-#define BT_DWindowDownButton 36
-#define BT_BlinkerFlash 37
-#define BT_LightState 38
+void NovaCanControl::initBrytec()
+{
+    qDebug() << "Init brytec";
+    Brytec::EBrytecApp::initalize();
 
-bool toBool(float& value){
-    return value > 0.0001f;
+    if (Brytec::EBrytecApp::isDeserializeOk())
+        qDebug() << "Deserialize Ok\n";
+    else
+        qDebug() << "Deserialize FAIL\n";
+
+    m_brytecTimer = new QTimer(this);
+    connect(m_brytecTimer, &QTimer::timeout, [](){ Brytec::EBrytecApp::processCanCommands(); });
+    connect(m_brytecTimer, &QTimer::timeout, [](){ Brytec::EBrytecApp::update(10.0f); });
+    m_brytecTimer->start(10);
 }
 
 void NovaCanControl::readFrame()
@@ -103,55 +79,24 @@ void NovaCanControl::readFrame()
 //    qDebug() << "Frames available: " << m_can1->framesAvailable();
     for(int i = 0; i < m_can1->framesAvailable(); i++){
         QCanBusFrame frame = m_can1->readFrame();
-        m_rawData[frame.frameId()] = frame;
-    }
+//        m_rawData[frame.frameId()] = frame;
+        Brytec::CanFrame brytecFrame;
+        brytecFrame.id = frame.frameId();
+        brytecFrame.type = frame.hasExtendedFrameFormat() ? Brytec::CanFrameType::Ext : Brytec::CanFrameType::Std;
+        brytecFrame.dlc = frame.payload().size();
+        memcpy(brytecFrame.data, frame.payload().data(), brytecFrame.dlc);
 
-    for(auto frame : m_rawData){
-        PinStatusBroadcast bc(frame);
-
-//        if(bc.moduleAddress != 99)
-//            return;
-
-        switch(bc.nodeGroupIndex){
-        case BT_IgnitionSwitch:
-            m_ignition = toBool(bc.value);
-            break;
-        case BT_BrakeSwitch:
-            m_brakeLights = toBool(bc.value);
-            break;
-        case BT_LeftTurnSwitch:
-            m_leftTurn = toBool(bc.value);
-            break;
-        case BT_RightTurnSwitch:
-            m_rightTurn = toBool(bc.value);
-            break;
-        case BT_LightState:
-            m_parkingLights = bc.value >= 0.5f;
-            m_lowBeam = bc.value >= 1.5f && bc.value < 2.5f;
-            m_highBeam = bc.value >= 2.5f;
-            m_fogLights = bc.value >= 1.5f;
-            break;
-        case BT_CoolingFan:
-            m_coolingFan = toBool(bc.value);
-            break;
-        case BT_FuelPump1Trig:
-            m_gasPump = toBool(bc.value);
-            break;
-        case BT_WaterInjPumpTrig:
-            m_methPump = toBool(bc.value);
-            break;
-
-            // Testing inputs
-        case BT_StartButton:
-            m_startButton = bc.value;
-            break;
-        case BT_NeutralSafety:
-            m_neutralSafety = bc.value;
-            break;
-        }
+        Brytec::EBrytecApp::canReceived(0, brytecFrame);
     }
 
     emit onNovaDataChanged();
+}
+
+void NovaCanControl::writeFrame(const Brytec::CanFrame& brytecFrame)
+{
+    QByteArray arr((const char*)brytecFrame.data, brytecFrame.dlc);
+    QCanBusFrame frame(brytecFrame.id, arr);
+    m_can1->writeFrame(frame);
 }
 
 

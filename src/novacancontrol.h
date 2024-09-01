@@ -5,13 +5,16 @@
 #include <QCanBus>
 #include <QTimer>
 #include <QMap>
+#include "EBrytecApp.h"
 
 class NovaCanControl : public QObject
 {
     Q_OBJECT
 
+    static NovaCanControl* s_instance;
     QCanBusDevice* m_can1;
     QTimer* m_timer;
+    QTimer* m_brytecTimer;
     QMap<quint32, QCanBusFrame> m_rawData;
 
     bool m_ignition = false;
@@ -27,6 +30,11 @@ class NovaCanControl : public QObject
     bool m_coolingFan = false;
     bool m_gasPump = false;
     bool m_methPump = false;
+    float m_gasLevel = 0.0f;
+    float m_methLevel = 0.0f;
+
+    // test
+    bool m_testButton = false;
 
     Q_PROPERTY(bool Ignition        MEMBER m_ignition         NOTIFY onNovaDataChanged)
     //Q_PROPERTY(bool EBrake          MEMBER m_eBrake           NOTIFY onNovaDataChanged)
@@ -41,24 +49,28 @@ class NovaCanControl : public QObject
     Q_PROPERTY(bool CoolingFan      MEMBER m_coolingFan       NOTIFY onNovaDataChanged)
     Q_PROPERTY(bool GasPump         MEMBER m_gasPump          NOTIFY onNovaDataChanged)
     Q_PROPERTY(bool MethPump        MEMBER m_methPump         NOTIFY onNovaDataChanged)
+    Q_PROPERTY(float GasLevel       MEMBER m_gasLevel         NOTIFY onNovaDataChanged)
+    Q_PROPERTY(float MethLevel      MEMBER m_methLevel        NOTIFY onNovaDataChanged)
 
-    // Testing inputs
-    float m_startButton = 0.0f;
-    float m_neutralSafety = 0.0f;
-    Q_PROPERTY(float StartButton    MEMBER m_startButton      NOTIFY onNovaDataChanged)
-    Q_PROPERTY(float NeutralSafety  MEMBER m_neutralSafety    NOTIFY onNovaDataChanged)
+    // test
+    Q_PROPERTY(bool TestButton      MEMBER m_testButton       NOTIFY onNovaDataChanged)
 
 public:
     explicit NovaCanControl(QObject *parent = nullptr);
     ~NovaCanControl();
+
+    static NovaCanControl* get() {return s_instance;}
 
 signals:
     void onNovaDataChanged();
 
 public slots:
     void connectToCan();
+    void initBrytec();
     void readFrame();
+    void writeFrame(const Brytec::CanFrame& brytecFrame);
 
+    friend class Brytec::BrytecBoard;
 };
 
 #endif // NOVACANCONTROL_H

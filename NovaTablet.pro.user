@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.7.1, 2023-04-30T11:19:21. -->
+<!-- Written by QtCreator 4.7.1, 2024-08-31T17:51:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -284,15 +284,15 @@
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
-       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
+       <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Debug/NovaTablet</value>
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Rasp_4-Release/NovaTablet</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
        <value type="QString">192.168.10.201</value>
-       <value type="QString">192.168.2.53</value>
-       <value type="QString">192.168.166.243</value>
        <value type="QString">192.168.2.30</value>
+       <value type="QString">192.168.166.243</value>
+       <value type="QString">192.168.2.53</value>
        <value type="QString">192.168.2.30</value>
        <value type="QString">192.168.4.1</value>
       </valuelist>
@@ -314,11 +314,11 @@
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
        <value type="QDateTime">2020-09-05T14:06:17.685</value>
-       <value type="QDateTime">2021-03-18T21:54:10.669</value>
-       <value type="QDateTime">2021-05-08T12:49:52.369</value>
-       <value type="QDateTime">2020-01-03T22:06:07.916</value>
        <value type="QDateTime">2020-02-17T15:32:45.059</value>
-       <value type="QDateTime">2023-04-30T11:18:03.928</value>
+       <value type="QDateTime">2021-05-08T12:49:52.369</value>
+       <value type="QDateTime">2021-03-18T21:54:10.669</value>
+       <value type="QDateTime">2020-01-03T22:06:07.916</value>
+       <value type="QDateTime">2024-06-29T09:47:17.608</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>
@@ -649,7 +649,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">NovaTablet.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/home/bryan/Qt Projects/build-NovaTablet-Desktop_Qt_5_10_1_GCC_64bit-Debug</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -888,8 +888,8 @@
        <value type="QString">/home/bryan/Qt Projects/build-NovaTablet-Camaro_Rasp_4-Release/NovaTablet</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
-       <value type="QString">192.168.137.223</value>
        <value type="QString">192.168.220.189</value>
+       <value type="QString">192.168.137.223</value>
        <value type="QString">192.168.137.160</value>
        <value type="QString">192.168.137.142</value>
       </valuelist>
@@ -906,8 +906,8 @@
        <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2021-07-19T17:35:23.007</value>
        <value type="QDateTime">2023-04-05T18:37:02.047</value>
+       <value type="QDateTime">2021-07-19T17:35:23.007</value>
        <value type="QDateTime">2023-04-16T08:59:03.675</value>
        <value type="QDateTime">2021-07-24T12:45:45.516</value>
       </valuelist>

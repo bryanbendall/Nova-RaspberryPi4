@@ -9,8 +9,8 @@ QtObject{
     property real afr2: holleyCan.AFR_Right
     property bool secondAfr: false
     property real boost: holleyCan.Boost
-    property real gasLevel: holleyCan.Input_11
-    property real methLevel: 50
+    property real gasLevel: novaCan.GasLevel
+    property real methLevel: novaCan.MethLevel
     property bool methSecondLevel: true
     property real gear: holleyCan.Gear
     property real cts: holleyCan.CTS

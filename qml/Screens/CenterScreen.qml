@@ -53,74 +53,76 @@ Item {
             text: "Odometer test: " + holleyCan.Odometer + " Miles";
         }
 
-//        Button{
-//            text: "Push"
-//            font.pointSize: 50
-//            anchors.top: odo.bottom
-//            onClicked: console.log("button pushed!!!!")
+        Button{
+            text: "Push"
+            font.pointSize: 50
+            anchors.top: odo.bottom
+            onClicked: console.log("button pushed!!!!")
+            onPressed: novaCan.TestButton = true
+            onReleased: novaCan.TestButton = false
+        }
+
+//        Component{
+//            id: labelText
+//            Text{
+//                color: "white"
+//                text: label
+//                horizontalAlignment: Text.AlignRight
+//                width: root.firstColumnWidth
+//            }
 //        }
 
-        Component{
-            id: labelText
-            Text{
-                color: "white"
-                text: label
-                horizontalAlignment: Text.AlignRight
-                width: root.firstColumnWidth
-            }
-        }
+//        Component{
+//            id: valueText
+//            Text{
+//                color: "white"
+//                text: label
+//            }
+//        }
 
-        Component{
-            id: valueText
-            Text{
-                color: "white"
-                text: label
-            }
-        }
+//        Row{
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.top: odo.bottom
+//            spacing: 30
 
-        Row{
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: odo.bottom
-            spacing: 30
+//            Column{
+//                width: root.firstColumnWidth - 5
+//                Loader{ sourceComponent: labelText; property string label: "Ignition" }
+//                Loader{ sourceComponent: labelText; property string label: "Brake Lights" }
+//                Loader{ sourceComponent: labelText; property string label: "Reverse Lights" }
+//                Loader{ sourceComponent: labelText; property string label: "Left Turn" }
+//                Loader{ sourceComponent: labelText; property string label: "Right Turn" }
+//                Loader{ sourceComponent: labelText; property string label: "Parking Lights" }
+//                Loader{ sourceComponent: labelText; property string label: "Low Beam" }
+//                Loader{ sourceComponent: labelText; property string label: "High Beam" }
+//                Loader{ sourceComponent: labelText; property string label: "Fog Lights" }
+//                Loader{ sourceComponent: labelText; property string label: "Cooling Fan" }
+//                Loader{ sourceComponent: labelText; property string label: "Gas Pump" }
+//                Loader{ sourceComponent: labelText; property string label: "Meth Pump" }
+//                Loader{ sourceComponent: labelText; property string label: "Start Button" }
+//                Loader{ sourceComponent: labelText; property string label: "Neutral Safety" }
+//            }
 
-            Column{
-                width: root.firstColumnWidth - 5
-                Loader{ sourceComponent: labelText; property string label: "Ignition" }
-                Loader{ sourceComponent: labelText; property string label: "Brake Lights" }
-                Loader{ sourceComponent: labelText; property string label: "Reverse Lights" }
-                Loader{ sourceComponent: labelText; property string label: "Left Turn" }
-                Loader{ sourceComponent: labelText; property string label: "Right Turn" }
-                Loader{ sourceComponent: labelText; property string label: "Parking Lights" }
-                Loader{ sourceComponent: labelText; property string label: "Low Beam" }
-                Loader{ sourceComponent: labelText; property string label: "High Beam" }
-                Loader{ sourceComponent: labelText; property string label: "Fog Lights" }
-                Loader{ sourceComponent: labelText; property string label: "Cooling Fan" }
-                Loader{ sourceComponent: labelText; property string label: "Gas Pump" }
-                Loader{ sourceComponent: labelText; property string label: "Meth Pump" }
-                Loader{ sourceComponent: labelText; property string label: "Start Button" }
-                Loader{ sourceComponent: labelText; property string label: "Neutral Safety" }
-            }
+//            Column{
+//                width: root.width/2 - 5
+//                Loader{ sourceComponent: valueText; property string label: novaCan.Ignition }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.BrakeLights }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.ReverseLights }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.LeftTurn }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.RightTurn }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.ParkingLights }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.LowBeam }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.HighBeam }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.FogLights }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.CoolingFan }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.GasPump }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.MethPump }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.StartButton }
+//                Loader{ sourceComponent: valueText; property string label: novaCan.NeutralSafety }
 
-            Column{
-                width: root.width/2 - 5
-                Loader{ sourceComponent: valueText; property string label: novaCan.Ignition }
-                Loader{ sourceComponent: valueText; property string label: novaCan.BrakeLights }
-                Loader{ sourceComponent: valueText; property string label: novaCan.ReverseLights }
-                Loader{ sourceComponent: valueText; property string label: novaCan.LeftTurn }
-                Loader{ sourceComponent: valueText; property string label: novaCan.RightTurn }
-                Loader{ sourceComponent: valueText; property string label: novaCan.ParkingLights }
-                Loader{ sourceComponent: valueText; property string label: novaCan.LowBeam }
-                Loader{ sourceComponent: valueText; property string label: novaCan.HighBeam }
-                Loader{ sourceComponent: valueText; property string label: novaCan.FogLights }
-                Loader{ sourceComponent: valueText; property string label: novaCan.CoolingFan }
-                Loader{ sourceComponent: valueText; property string label: novaCan.GasPump }
-                Loader{ sourceComponent: valueText; property string label: novaCan.MethPump }
-                Loader{ sourceComponent: valueText; property string label: novaCan.StartButton }
-                Loader{ sourceComponent: valueText; property string label: novaCan.NeutralSafety }
+//            }
 
-            }
-
-        }
+//        }
 
     }
 }

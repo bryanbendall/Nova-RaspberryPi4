@@ -1,0 +1,3 @@
+[submodule "src/BrytecConfigEmbedded"]
+	path = src/BrytecConfigEmbedded
+	url = https://github.com/bryanbendall/BrytecConfigEmbedded.git

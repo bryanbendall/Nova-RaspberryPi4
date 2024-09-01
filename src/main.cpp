@@ -13,6 +13,7 @@
 #include <QSettings>
 #include "httplistener.h"
 #include "wificontroller.h"
+#include "EBrytecApp.h"
 
 using namespace stefanfrings;
 
